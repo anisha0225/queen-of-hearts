@@ -1,45 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../App.css';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { gsap } from 'gsap';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchType, setSearchType] = useState('sku');
+  const [showIcons, setShowIcons] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const scrollToTopRef = useRef(null);
+  const searchOverlayRef = useRef(null);
+  const fixedButtonRef = useRef(null);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+  const openLocation = () => window.open('https://www.google.com/maps/place/Khwaahish+Diamond+Jewellery/@13.0313087,80.2542243,17z/data=!3m1!4b1!4m6!3m5!1s0x3a5267b22f01d055:0x4fceee85310a87f!8m2!3d13.0313087!4d80.2567992!16s%2Fg%2F1vc80773?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D', '_blank');
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setShowScrollTop(true);
-        gsap.to(scrollToTopRef.current, {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.in"
-        });
-      } else {
-        gsap.to(scrollToTopRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.in",
-          onComplete: () => setShowScrollTop(false)
-        });
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Fixed Button Animation
   useEffect(() => {
@@ -78,6 +62,127 @@ const Hero = () => {
     };
   }, []);
 
+  //Scroll-To-Top  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 15) {
+        setShowScrollTop(true);
+        gsap.to(scrollToTopRef.current, {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.in"
+        });
+      } else {
+        gsap.to(scrollToTopRef.current, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+          onComplete: () => setShowScrollTop(false)
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // GSAP Menu Animation
+  useEffect(() => {
+    const menuTimeline = gsap.timeline();
+    
+    if (isMenuOpen) {
+      menuTimeline
+        .fromTo('.menu', 
+          { x: '-100%' },
+          { x: '0%', duration: 0.6, ease: 'power3.out' }
+        )
+        .fromTo('.menu p',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4 },
+          '-=0.2'
+        )
+        .fromTo('.menu h4',
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.3 },
+          '-=0.2'
+        )
+        .fromTo('.menu ul li',
+          { 
+            opacity: 0,
+            x: -30,
+            rotation: -5
+          },
+          { 
+            opacity: 1,
+            x: 0,
+            rotation: 0,
+            duration: 0.4,
+            stagger: 0.1,
+            ease: 'power2.out'
+          },
+          '-=0.1'
+        );
+    } else {
+      menuTimeline
+        .to('.menu ul li',
+          {
+            opacity: 0,
+            x: -50,
+            rotation: -10,
+            duration: 0.3,
+            stagger: 0.05,
+            ease: 'power2.in'
+          }
+        )
+        .to('.menu h4',
+          {
+            opacity: 0,
+            x: -30,
+            duration: 0.3,
+            ease: 'power2.in'
+          },
+          '-=0.2'
+        )
+        .to('.menu p',
+          {
+            opacity: 0,
+            x: -30,
+            duration: 0.3,
+            ease: 'power2.in'
+          },
+          '-=0.2'
+        )
+        .to('.menu',
+          {
+            x: '-100%',
+            duration: 0.5,
+            ease: 'power3.inOut',
+            onComplete: () => {
+              gsap.set(['.menu ul li', '.menu h4', '.menu p'], {clearProps: 'all'});
+            }
+          },
+          '-=0.2'
+        );
+    }
+  }, [isMenuOpen]);
+
+  // GSAP Search Overlay Height Animation
+  useEffect(() => {
+    if (isSearchOpen) {
+      gsap.fromTo(
+        searchOverlayRef.current,
+        { height: '16rem' },
+        { height: searchType === 'sku' ? '16rem' : '13rem', duration: 0.5, ease: 'power2.in' }
+      );
+    } else {
+      gsap.to(searchOverlayRef.current, {
+        height: 0,
+        duration: 0.5,
+        ease: 'power2.in',
+      });
+    }
+  }, [isSearchOpen, searchType]);
+
   return (
     <>
       <div className='relative justify-center flex flex-col items-center pb-10'>
@@ -95,18 +200,22 @@ const Hero = () => {
         <div className='flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 w-full max-w-7xl mx-auto'>
           <h2 className='text-4xl md:text-6xl lg:text-9xl -my-2 md:-my-4 lg:-my-9' id="festara">Festara</h2>
           <p className='pt-4 md:pt-8 lg:pt-12 leading-7 font-centuryGothic w-full md:w-[90%] lg:w-[90%] xl:w-[87%] text-center text-[#757575] text-sm md:text-m lg:text-m tracking-widest'>
-            Festara celebrates life's most daring moments with a vivid assortment of beautiful gemstone jewelry. Each piece sparkles with beauty, illuminating your surroundings with every movement.
+            Festara celebrates life&apos;s most daring moments with a vivid assortment of beautiful gemstone jewelry. Each piece sparkles with beauty, illuminating your surroundings with every movement.
           </p>
         </div>
 
         <div className="w-full">
           {/* eShop Button */}
-          <div className="fixed -right-11 top-52 z-50 md:block">
-            <a href="/gulz" className="fixed-shop-button flex items-center bg-yellow-600 text-white w-28 h-12 p-2 transition-all duration-300 border-2 border-transparent rotate-90">
-              <img src="/assets/sh_1.png" alt="Logo" className="h-6 mr-2" />
-              eShop
-            </a>
-          </div>
+          <Link to="/gulz">
+            <div className="fixed -right-11 top-52 z-50">
+              <p
+                className="fixed-shop-button flex items-center bg-yellow-600 text-white w-28 h-12 p-2 transition-all duration-300 hover:bg-white hover:text-black border-2 border-transparent hover:border-yellow-700 rotate-90"
+              >
+                <img src="/assets/sh_1.png" alt="Logo" className="h-6 mr-2" />
+                eShop
+              </p>
+            </div>
+          </Link>
 
           {/* Scroll to Top Button */}
           <div 
