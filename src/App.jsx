@@ -14,6 +14,7 @@ import {Route,Routes} from "react-router-dom"
 import FinalPage from './FinalPage(festara)'
 import FinalPage1 from './FinalPage(q-o-h)'
 import FinalPage2 from './FinalPage(Gulz)'
+import FinalPage3 from './FinalPage(Fazza)'
 const App = () => {
 
   return (
@@ -23,6 +24,8 @@ const App = () => {
     <Route path="/" element={<FinalPage1/>}/>
     <Route path="/festara" element={<FinalPage/>}/>
     <Route path="/gulz" element={<FinalPage2/>}/>
+    <Route path="/fazza" element={<FinalPage3/>}/>
+
   </Routes>
   </>
     </div>

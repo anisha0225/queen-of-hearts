@@ -230,7 +230,7 @@ const Hero = () => {
 
                 <li>
                   <Link
-                    to="/"
+                    to="/fazza"
                     className="text-gray-900 hover:text-yellow-600 hover:underline hover:underline-offset-4 transition-all duration-500 text-sm sm:text-m"
                   >
                     Fazza - Gorgeous Polki
