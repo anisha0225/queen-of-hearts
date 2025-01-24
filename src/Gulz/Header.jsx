@@ -98,7 +98,7 @@ const Header = () => {
               className="text-xl font-bold hover:text-gray-500 px-4 flex justify-end items-center w-full"
             >
               <img
-                src="/public/assets/eshop/output-onlinejpgtools-removebg-preview.png"
+                src="/assets/eshop/output-onlinejpgtools-removebg-preview.png"
                 alt="Close"
                 className="h-5 ml-auto cursor-pointer transition-transform duration-300 ease-in-out transform hover:rotate-180"
               />
