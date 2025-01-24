@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -89,6 +90,124 @@ const Header = () => {
 
   return (
     <div className="h-[60vh] md:h-screen w-full relative">
+                 {isMenuOpen && (
+        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded">
+          <div className="p-4">
+            <button
+              onClick={toggleMenu}
+              className="text-xl font-bold hover:text-gray-500 px-4 flex justify-end items-center w-full"
+            >
+              <img
+                src="/public/assets/eshop/output-onlinejpgtools-removebg-preview.png"
+                alt="Close"
+                className="h-5 ml-auto cursor-pointer transition-transform duration-300 ease-in-out transform hover:rotate-180"
+              />
+            </button>
+
+           
+
+            <h4 className="text-lg sm:text-xl font-semibold px-1 text-[#4F2426] tracking-widest">
+              Categories
+              <span className="block border-b-2 border-[#4F2426] w-14 mt-2"></span>
+            </h4>
+
+            <ul className="mt-6 space-y-4 px-2">
+              <li>
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Diamond Rings
+                </Link>
+              </li>
+
+              <li>
+              <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Diamond Earrings
+                </Link>
+              </li>
+              <li>
+              <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Diamond Bracelets
+                </Link>
+              </li>
+              <li>
+              <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Diamond Necklaces
+                </Link>
+                </li>
+                <li>
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                Lucky Charms for Kids
+                </Link>
+                </li>
+              
+              <div className="text-gray-700 text-[0.95rem] sm:text-[0.95rem] leading-6 py-8 tracking-widest">
+              Queen of Hearts - Chennai&apos;s crown jewel of partywear, where lightweight don&apos;t mean low on drama. Our sub-brands are curated in-house, designed to excite & appeal to the lifestyle of those who appreciate craft & all things precious.
+            </div>
+            <h4 className="text-lg sm:text-xl font-semibold px-1 text-[#4F2426] tracking-widest">
+              Currated Brands
+              <span className="block border-b-2 border-[#4F2426] w-14 mt-2"></span>
+            </h4>
+            
+            <li>
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Gulz-Trendy & Chic Diamonds
+                </Link>
+              </li>
+
+              <li>
+              <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Fazza-Gorgeous Polki
+                </Link>
+              </li>
+              <li>
+              <Link
+                  to="/festara"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Festara-Romancing Gemstones
+                </Link>
+              </li>
+              <li>
+              <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Pache-Precious Jewellery for Men
+                </Link>
+              </li>
+              
+        
+            </ul>
+            
+            <Link
+              to="/"
+              className="text-[#4F2426] hover:text-yellow-600 hover:underline hover:underline-offset-4 transition-all duration-500 mt-10 block text-base sm:text-lg"
+            >
+              VISIT BRAND WEBSITE
+            </Link>
+          </div>
+        </div>
+      )}
       <div className=" h-20 w-full absolute top-0 left-0">
         <div className="block md:hidden py-2 w-full bg-[#f7ebeb]">
           <a href="#" className="text-[#4F2426] uppercase text-xs md:text-base text-center block hover:underline transition-all duration-300">
@@ -135,97 +254,6 @@ const Header = () => {
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="menu fixed top-0 left-0 w-[24rem] h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#f7ebeb] [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded-full">
-          <div className="px-8">
-            <button
-              onClick={toggleMenu}
-              className="text-xl font-bold hover:text-gray-500 py-5 px-4 flex justify-end items-center w-full"
-            >
-              <img
-                src="/assets/eshop/output-onlinejpgtools-removebg-preview.png"
-                alt="Close"
-                className="h-5 ml-auto cursor-pointer transition-transform duration-300 ease-in-out transform hover:rotate-180"
-              />
-            </button>
-
-          
-
-            <h4 className="text-lg sm:text-xl font-medium text-[#4F2426] tracking-widest -mt-5">
-              Categories
-              <span className="block border-b-2 border-[#58282a] w-14 mt-2"></span>
-            </h4>
-
-            <ul className="mt-6 space-y-6">
-              <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Diamond Rings
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Diamond Earrings
-                </a>
-              </li>
-              <li>
-                <a href="https://festara-seven.vercel.app/" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Diamond Bracelets
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Diamond Necklaces
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Lucky Charms for Kids
-                </a>
-              </li>
-            <div className="text-gray-700 text-[0.95rem] sm:text-[0.95rem] leading-6 py-1 tracking-widest">
-              Queen of Hearts - Chennai&apos;s crown jewel of partywear, where lightweight don&apos;t mean low on drama. Our sub-brands are curated in-house, designed to excite & appeal to the lifestyle of those who appreciate craft & all things precious.
-            </div>
-            </ul>
-           
-
-            <h4 className="text-lg sm:text-xl font-medium text-[#4F2426] tracking-widest mt-8">
-              Currated Brands
-              <span className="block border-b-2 border-[#4F2426] w-14 mt-2"></span>
-            </h4>
-
-            <ul className="mt-3 space-y-4 ">
-              <li>
-                <a href="/gulz" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                Gulz - Trendy & Chic Diamonds
-                </a>
-              </li>
-              <li>
-                <a href="/gulz" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                Fazza - Gorgeous Polki
-                </a>
-              </li>
-              <li>
-                <a href="/festara" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                Festara - Romancing Gemstones
-                </a>
-              </li>
-              <li>
-                <a href="/gulz" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                Pache - Precious Jewellery for Men
-                </a>
-              </li>
-             
-            </ul>
-
-            <div className="pt-7 pb-7">
-              <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 block text-base">
-                VISIT BRAND WEBSITE
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-
       <img
         className="hidden md:block h-full w-full object-cover object-left-top"
         src="/assets/eshop/headerPc.avif"
@@ -238,7 +266,8 @@ const Header = () => {
         src="/assets/eshop/header.avif"
         alt=""
       />
-      
+
+ 
     </div>
   );
 };

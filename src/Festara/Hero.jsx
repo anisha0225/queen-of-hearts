@@ -101,7 +101,7 @@ const Hero = () => {
 
         <div className="w-full">
           {/* eShop Button */}
-          <div className="fixed -right-11 top-52 z-50 hidden md:block">
+          <div className="fixed -right-11 top-52 z-50 md:block">
             <a href="/gulz" className="fixed-shop-button flex items-center bg-yellow-600 text-white w-28 h-12 p-2 transition-all duration-300 border-2 border-transparent rotate-90">
               <img src="/assets/sh_1.png" alt="Logo" className="h-6 mr-2" />
               eShop

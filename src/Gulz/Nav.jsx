@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 const Nav = () => {
   const [show, setShow] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,21 +15,21 @@ const Nav = () => {
     
     if (isMenuOpen) {
       menuTimeline
-        .fromTo('.nav-menu', 
+        .fromTo('.menu', 
           { x: '-100%' },
           { x: '0%', duration: 0.6, ease: 'power3.out' }
         )
-        .fromTo('.nav-menu p',
+        .fromTo('.menu p',
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.4 },
           '-=0.2'
         )
-        .fromTo('.nav-menu h4',
+        .fromTo('.menu h4',
           { opacity: 0, y: 15 },
           { opacity: 1, y: 0, duration: 0.3 },
           '-=0.2'
         )
-        .fromTo('.nav-menu ul li',
+        .fromTo('.menu ul li',
           { 
             opacity: 0,
             x: -30,
@@ -46,7 +47,7 @@ const Nav = () => {
         );
     } else {
       menuTimeline
-        .to('.nav-menu ul li',
+        .to('.menu ul li',
           {
             opacity: 0,
             x: -50,
@@ -56,7 +57,7 @@ const Nav = () => {
             ease: 'power2.in'
           }
         )
-        .to('.nav-menu h4',
+        .to('.menu h4',
           {
             opacity: 0,
             x: -30,
@@ -65,7 +66,7 @@ const Nav = () => {
           },
           '-=0.2'
         )
-        .to('.nav-menu p',
+        .to('.menu p',
           {
             opacity: 0,
             x: -30,
@@ -74,13 +75,13 @@ const Nav = () => {
           },
           '-=0.2'
         )
-        .to('.nav-menu',
+        .to('.menu',
           {
             x: '-100%',
             duration: 0.5,
             ease: 'power3.inOut',
             onComplete: () => {
-              gsap.set(['.nav-menu ul li', '.nav-menu h4', '.nav-menu p'], {clearProps: 'all'});
+              gsap.set(['.menu ul li', '.menu h4', '.menu p'], {clearProps: 'all'});
             }
           },
           '-=0.2'
@@ -146,11 +147,11 @@ const Nav = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="nav-menu fixed top-0 left-0 w-[24rem] h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#f7ebeb] [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded-full">
-          <div className="px-8">
+        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded">
+          <div className="p-4">
             <button
               onClick={toggleMenu}
-              className="text-xl font-bold hover:text-gray-500 py-5 px-4 flex justify-end items-center w-full"
+              className="text-xl font-bold hover:text-gray-500 px-4 flex justify-end items-center w-full"
             >
               <img
                 src="/assets/eshop/output-onlinejpgtools-removebg-preview.png"
@@ -159,76 +160,104 @@ const Nav = () => {
               />
             </button>
 
-            <h4 className="text-lg sm:text-xl font-medium text-[#4F2426] tracking-widest -mt-5">
+            <h4 className="text-lg sm:text-xl font-semibold px-1 text-[#4F2426] tracking-widest">
               Categories
-              <span className="block border-b-2 border-[#58282a] w-14 mt-2"></span>
+              <span className="block border-b-2 border-[#4F2426] w-14 mt-2"></span>
             </h4>
 
-            <ul className="mt-6 space-y-6">
+            <ul className="mt-6 space-y-4 px-2">
               <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
                   Diamond Rings
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
                   Diamond Earrings
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
                   Diamond Bracelets
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
                   Diamond Necklaces
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-2 transition-all duration-500 text-[0.95rem] tracking-widest">
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
                   Lucky Charms for Kids
-                </a>
+                </Link>
               </li>
             </ul>
 
-            <div className="text-gray-700 text-[0.95rem] sm:text-[0.95rem] leading-6 py-1 tracking-widest">
+            <div className="text-gray-700 text-[0.95rem] sm:text-[0.95rem] leading-6 py-8 tracking-widest">
               Queen of Hearts - Chennai&apos;s crown jewel of partywear, where lightweight don&apos;t mean low on drama. Our sub-brands are curated in-house, designed to excite & appeal to the lifestyle of those who appreciate craft & all things precious.
             </div>
 
-            <h4 className="text-lg sm:text-xl font-medium text-[#4F2426] tracking-widest mt-8">
+            <h4 className="text-lg sm:text-xl font-semibold px-1 text-[#4F2426] tracking-widest">
               Currated Brands
               <span className="block border-b-2 border-[#4F2426] w-14 mt-2"></span>
             </h4>
 
             <ul className="mt-3 space-y-4">
               <li>
-                <a href="/gulz" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Gulz - Trendy & Chic Diamonds
-                </a>
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Gulz-Trendy & Chic Diamonds
+                </Link>
               </li>
               <li>
-                <a href="/gulz" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Fazza - Gorgeous Polki
-                </a>
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Fazza-Gorgeous Polki
+                </Link>
               </li>
               <li>
-                <a href="/festara" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Festara - Romancing Gemstones
-                </a>
+                <Link
+                  to="/festara"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Festara-Romancing Gemstones
+                </Link>
               </li>
               <li>
-                <a href="/gulz" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest">
-                  Pache - Precious Jewellery for Men
-                </a>
+                <Link
+                  to="/gulz"
+                  className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
+                >
+                  Pache-Precious Jewellery for Men
+                </Link>
               </li>
             </ul>
 
-            <div className="pt-7 pb-7">
-              <a href="#" className="text-gray-700 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 block text-base">
-                VISIT BRAND WEBSITE
-              </a>
-            </div>
+            <Link
+              to="/"
+              className="text-[#4F2426] hover:text-yellow-600 hover:underline hover:underline-offset-4 transition-all duration-500 mt-10 block text-base sm:text-lg"
+            >
+              VISIT BRAND WEBSITE
+            </Link>
           </div>
         </div>
       )}
