@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -7,9 +8,9 @@ const Footer = () => {
         <div className="flex flex-wrap justify-between py-4">
           <div className="w-full md:w-1/3 mb-8">
             <div className="flex items-center mb-4">
-              <img src="/assets/Festara-Logo.svg" alt="Khwaahish Logo" className="px-5 h-8 sm:h-20" />
-              <div className="mx-4 h-10 w-px bg-gray-900"></div>
-              <p className="text-gray-900 text-[1.1rem]">QUEEN OF HEARTS</p>
+              <img src="/assets/Festara-Logo.svg" alt="Khwaahish Logo" className="px-5 h-8 sm:h-14" />
+              <div className=" h-10 w-px bg-gray-900"></div>
+              <Link to="/" className="text-gray-900 text-[1.1rem] mx-2">QUEEN OF HEARTS</Link>
             </div>
           </div>
 

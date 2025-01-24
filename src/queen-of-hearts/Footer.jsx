@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <img src="/assets/i-2.png" alt="Khwaahish Logo" className="px-5 h-16 sm:h-20" />
               <div className="mx-4 h-10 w-px bg-gray-900"></div>
-              <p className="text-gray-900 text-2xl">QUEEN OF HEARTS</p>
+              <Link to="/" className="text-gray-900 text-2xl">QUEEN OF HEARTS</Link>
             </div>
           </div>
 

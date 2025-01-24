@@ -207,10 +207,10 @@ const Navbar = () => {
 
         <div className="flex items-center">
         
-            <img src="/assets/download.svg" alt="Middle Logo" className="h-12 sm:h-16 cursor-pointer" />
+            <img src="/assets/download.svg" alt="Middle Logo" className="h-10 sm:h-16 cursor-pointer" />
         
           <div className="border-l border-white h-4 sm:h-6 mx-2 sm:mx-4" id="divide"></div>
-          <a href="/" className="font-medium text-lg sm:text-2xl text-white">
+          <a href="/" className="font-medium text-base md:text-2xl sm:text-xl text-white">
             QUEEN OF HEARTS
           </a>
         </div>

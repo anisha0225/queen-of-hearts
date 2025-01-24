@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -9,9 +10,9 @@ const Footer = () => {
             <div className="h-fit w-16 sm:w-20 lg:w-28 pr-2">
               <img src="/assets/eshop/Gulz-brown.svg" alt="" className="w-full h-full object-contain" />
             </div>
-            <p className="text-amber-950 text-base sm:text-lg lg:text-2xl pl-3 border-l border-amber-950">
+            <Link to="/" className="text-amber-950 text-base sm:text-lg lg:text-2xl pl-3 border-l border-amber-950">
               QUEEN OF HEARTS
-            </p>
+            </Link>
           </div>
         </div>
         <div className="w-full lg:w-[20%] flex flex-col gap-2 items-center lg:items-start">
