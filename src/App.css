@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/assets/GOTHIC.TTF') format('truetype');
+  }
+  @font-face {
+    font-family: 'CustomG';
+    src: url('/assets/Bigilla-Bold.otf') format('truetype');
+  }
+  @font-face {
+    font-family: 'CustomFontBigilia';
+    src: url('/assets/Bigilla.otf') format('truetype');
+  }
+  @font-face {
+    font-family: 'CustomFontAutography';
+    src: url('/assets/Autography.otf') format('truetype');
+  }
+  @font-face {
+    font-family: 'CustomFontCarpethen';
+    src: url('/public/assets/Carpethen.otf') format('truetype');
+  }
+  body {
+    font-family: 'CustomFont', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  .gsap-navbar {
+    font-family: 'CustomFont', sans-serif;
+  }
+  
+  .marquee-text {
+    font-family: 'CustomFont', sans-serif;
+    font-size: 1rem;
+  }
+  #parthen{
+    font-family: 'CustomFontCarpethen',sans-serif;
+  }
+  #box{
+    font-family: 'CustomG', sans-serif;
+  }
+#festara{
+  font-family: 'CustomFontAutography',sans-serif;
+}
+  .white-image {
+    filter: brightness(0) invert(1);
+  }
+  #bigfont{
+    font-family: 'CustomFontBigilia', sans-serif;
+  }
