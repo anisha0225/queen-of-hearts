@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="flex items-center lg:justify-start text-center justify-center sm:justify-start">
               <img src="/assets/Fazza logo.svg" alt="Khwaahish Logo" className="px-2 h-10 sm:h-10" />
               <div className="mx-2 h-10 w-px bg-gray-900"></div>
-              <Link to="/" className="text-gray-900 text-[3.5vw] md:text-xl lg:text-xl">QUEEN OF HEARTS</Link>
+              <Link to="/" className="text-gray-900 text-[4.5vw] sm:text-sm md:text-lg lg:text-xl">QUEEN OF HEARTS</Link>
             </div>
           </div>
 
