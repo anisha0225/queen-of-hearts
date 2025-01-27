@@ -20,7 +20,7 @@ const Galleria = () => {
   }, [])
 
   return (
-    <section ref={galleriaRef} className="text-center w-full h-auto flex-col sm:py-8 md:py-10 lg:py-32">
+    <section ref={galleriaRef} className="text-center w-full h-auto flex-col sm:py-8 md:py-10 lg:py-24">
       {/* Header Section */}
       <div className="flex items-center justify-center mb-3 sm:mb-4 md:mb-6 lg:mb-8">
         <hr className="w-4 sm:w-6 md:w-8 lg:w-16 h-0.5 bg-gray-700 border-0 rounded" />
