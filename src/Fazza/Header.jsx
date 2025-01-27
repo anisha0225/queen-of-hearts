@@ -174,7 +174,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="top-10 left-0 w-full md:mt-0 lg:mt-0 py-1 md:py-2 lg:py-2 sm:py-2 px-2 sm:px-6 flex items-center justify-between z-20 text-black bg-white">
+      <div className="top-10 left-0 w-full md:mt-0 lg:mt-0 py-2 md:py-2 lg:py-2 sm:py-2 px-2 sm:px-6 flex items-center justify-between z-20 text-black bg-white">
         <div className="flex items-center" onClick={toggleMenu}>
           <img src="/assets/menu-black.png" alt="Left Logo" className="h-7 sm:h-8 mr-2 sm:mr-4 px-2 sm:px-10 cursor-pointer"/>
         </div>

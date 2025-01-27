@@ -66,7 +66,7 @@ const Jewels = () => {
         </p>
       </div>
 
-      <div className="w-full overflow-hidden pb-8 z-[-2]">
+      <div className="w-full overflow-hidden pb-8 -z-10">
         <section className="py-4 sm:py-4 md:py-4">
           <div className="relative">
             {/* For larger screens (>1024px) */}

@@ -40,7 +40,7 @@ const Jewels = () => {
   const swiperRef = useRef(null);
 
   return (
-    <div className="flex flex-col items-center pb-8">
+    <div className="flex flex-col items-center pb-8 ">
       <div className="flex flex-col items-center justify-center px-4 sm:px-0">
         <div className="flex items-center justify-center mb-3">
           <hr className="w-8 sm:w-16 h-0.5 bg-gray-700 border-0 rounded" />
@@ -52,7 +52,7 @@ const Jewels = () => {
         </p>
       </div>
 
-      <div className="w-full overflow-hidden pb-8 ">
+      <div className="w-full overflow-hidden pb-8 -z-10">
         <section className="py-4 sm:py-2 md:py-4 ">
           <div className="relative">
             {/* For desktop (1024px and above) */}
