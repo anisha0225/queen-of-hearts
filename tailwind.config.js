@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       animation: {
-        'scroll-icons': 'scrollIcons 30s linear infinite',
+        
+        'scroll-icons-hover': 'scrollIcons 30s linear infinite paused',
       },
       keyframes: {
         scrollIcons: {

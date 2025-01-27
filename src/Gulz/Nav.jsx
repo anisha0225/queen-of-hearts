@@ -111,7 +111,7 @@ const Nav = () => {
       <div className="w-full h-8 md:h-10 bg-[#4F2426] p-2 px-4 md:px-8">
         <div className="h-full w-full relative">
           <a href="#" className="text-white uppercase text-xs md:text-base hidden md:block hover:underline transition-all duration-300">Visit Brand Website</a>
-          <div className="w-[80%] md:w-[35%] h-full absolute left-1/2 -translate-x-1/2 top-0 overflow-hidden">
+          <div className="w-[80%] md:w-[35%] absolute left-1/2 -translate-x-1/2 top-0 overflow-hidden">
             <div className="whitespace-nowrap animate-marquee2">
               Free & Insured Shipping Across India | International Shipping +919884039111
             </div>

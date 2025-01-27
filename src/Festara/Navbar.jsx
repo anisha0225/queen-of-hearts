@@ -2,73 +2,26 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchType, setSearchType] = useState('sku');
   const searchOverlayRef = useRef(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
   const openLocation = () => window.open('https://www.google.com/maps/place/Khwaahish+Diamond+Jewellery/@13.0313087,80.2542243,17z/data=!3m1!4b1!4m6!3m5!1s0x3a5267b22f01d055:0x4fceee85310a87f!8m2!3d13.0313087!4d80.2567992!16s%2Fg%2F1vc80773?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D', '_blank');
-
-  // GSAP Navbar Background Animation
-  useEffect(() => {
-    const navbar = document.querySelector('#gsap-navbar');
-    const navbarImages = document.querySelectorAll('#gsap-navbar img');
-    const navbarLinks = document.querySelectorAll('#gsap-navbar a');
-    const divide = document.querySelector('#divide');
-
-    navbar.style.backgroundColor = 'transparent';
-
-    gsap.to(navbar, {
-      backgroundColor: 'white',
-      scrollTrigger: {
-        trigger: navbar,
-        start: 'top top',
-        end: '+=100',
-        toggleActions: 'play none none reverse',
-        scrub: true,
-      },
-    });
-
-    gsap.to(navbarLinks, {
-      filter: 'brightness(0)',
-      scrollTrigger: {
-        trigger: navbar,
-        start: 'top top',
-        end: '+=100',
-        toggleActions: 'play none none reverse',
-        scrub: true,
-      },
-    });
-
-    gsap.to(navbarImages, {
-      filter: 'brightness(0)',
-      scrollTrigger: {
-        trigger: navbar,
-        start: 'top top',
-        end: '+=100',
-        toggleActions: 'play none none reverse',
-        scrub: true,
-      },
-    });
-
-    gsap.to(divide, {
-      filter: 'brightness(0)',
-      scrollTrigger: {
-        trigger: navbar,
-        start: 'top top',
-        end: '+=100',
-        toggleActions: 'play none none reverse',
-        scrub: true,
-      },
-    });
-  }, []);
 
   // GSAP Menu Animation
   useEffect(() => {
@@ -155,8 +108,8 @@ const Navbar = () => {
     if (isSearchOpen) {
       gsap.fromTo(
         searchOverlayRef.current,
-        { height: '16rem' },
-        { height: searchType === 'sku' ? '16rem' : '13rem', duration: 0.5, ease: 'power2.in' }
+        { height: windowWidth < 768 ? '20rem' : '16rem' },
+        { height: searchType === 'sku' ? (windowWidth < 768 ? '20rem' : '16rem') : (windowWidth < 768 ? '17rem' : '13rem'), duration: 0.5, ease: 'power2.in' }
       );
     } else {
       gsap.to(searchOverlayRef.current, {
@@ -165,52 +118,61 @@ const Navbar = () => {
         ease: 'power2.in',
       });
     }
-  }, [isSearchOpen, searchType]);
+  }, [isSearchOpen, searchType, windowWidth]);
+
+  const marqueeText = "We Ship Worldwide | Free Shipping Across India. For further details, Please call: +91 9884039111 | We design, manufacture & retail jewellery using NATURAL DIAMONDS only | All our Jewels are BIS Hallmarked & Diamonds are ethically sourced & certified by world-renowned Gemological Institutes.";
 
   return (
     <>
       {/* Mobile Navbar */}
       <div className="md:hidden">
-        <div className="fixed top-0 left-0 w-full bg-white text-black py-2 z-20">
+        <div className="top-0 left-0 w-full bg-white text-black py-2 z-20">
           <Link to="/" className="block text-center font-medium text-xs px-2 py-1">
             VISIT BRAND WEBSITE
           </Link>
         </div>
         
-        <div className="fixed top-8 left-0 w-full bg-black text-white py-2 z-20">
-          <div className="whitespace-nowrap px-4">
-            <marquee direction="left" className="text-xs">
-              We Ship Worldwide | Free Shipping Across India. For further details, Please call: +91 9884039111 | We design, manufacture & retail jewellery using NATURAL DIAMONDS only | All our Jewels are BIS Hallmarked & Diamonds are ethically sourced & certified by world-renowned Gemological Institutes.
-            </marquee>
+        <div className="top-8 left-0 w-full bg-black text-white py-2 z-20">
+          <div className="whitespace-nowrap px-4 overflow-hidden">
+            <div className="animate-marquee inline-block ">
+              {marqueeText}
+              &nbsp;&nbsp;&nbsp;
+              {marqueeText}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Desktop Navbar */}
-      <div className="hidden md:block fixed top-0 left-0 w-full bg-black text-white py-2 z-20">
+      <div className="hidden md:block top-0 left-0 w-full bg-black text-white py-2 z-20">
         <div className="overflow-hidden relative">
           <Link to="/" className="absolute top-0 left-0 z-30 text-white font-medium text-sm px-5 py-1 bg-black hover:underline" style={{textDecorationThickness: '1px', textUnderlineOffset: '6px'}}>
             VISIT BRAND WEBSITE
           </Link>
-          <div className="whitespace-nowrap px-20">
-            <marquee direction="left" className="text-sm">
-              We Ship Worldwide | Free Shipping Across India. For further details, Please call: +91 9884039111 | We design, manufacture & retail jewellery using NATURAL DIAMONDS only | All our Jewels are BIS Hallmarked & Diamonds are ethically sourced & certified by world-renowned Gemological Institutes.
-            </marquee>
+          <div className="whitespace-nowrap px-4 overflow-hidden lg:w-[95%] md:w-[83%] sm:w-[70%]">
+            <div className="animate-marquee inline-block text-sm ">
+              {marqueeText}
+              &nbsp;&nbsp;&nbsp;
+              {marqueeText}
+            </div>
           </div>
         </div>
       </div>
 
-      <div id="gsap-navbar" className="fixed top-10 left-0 w-full mt-8 md:mt-0 lg:mt-0 py-2 md:py-2 lg:py-2 sm:py-2 px-2 sm:px-6 flex items-center justify-between z-20 bg-transparent text-white" style={{ transition: 'background-color 0.4s ease' }}>
+      <div className="top-10 left-0 w-full mt-2 md:mt-0 lg:mt-0 py-1 md:py-2 lg:py-2 sm:py-2 px-2 sm:px-6 flex items-center justify-between z-20 text-white">
+
+
+
+
+        
         <div className="flex items-center" onClick={toggleMenu}>
           <img src="/assets/output-onlinepngtools.png" alt="Left Logo" className="h-7 sm:h-8 mr-2 sm:mr-4 px-2 sm:px-10 cursor-pointer"/>
         </div>
 
         <div className="flex items-center">
-        
-            <img src="/assets/download.svg" alt="Middle Logo" className="h-8 sm:h-14 cursor-pointer" />
-        
+          <img src="/assets/download.svg" alt="Middle Logo" className="h-8 sm:h-12 cursor-pointer" />
           <div className="border-l border-white h-4 sm:h-6 mx-2 sm:mx-4" id="divide"></div>
-          <a href="/" className="font-medium text-base md:text-2xl sm:text-xl text-white">
+          <a href="/" className="font-medium text-xs sm:text-xl text-white">
             QUEEN OF HEARTS
           </a>
         </div>
@@ -223,8 +185,7 @@ const Navbar = () => {
 
       {/*Menu*/}
       {isMenuOpen && (
-                <div className="menu fixed top-0 left-0 w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto md:w-[24rem] lg:w-[24rem] sm:w-full max-w-full" style={{ width: window.innerWidth <= 478 ? '100%' : '24rem' }}>
-
+        <div className="menu fixed top-0 left-0 w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto md:w-[24rem] lg:w-[24rem] sm:w-full max-w-full" style={{ width: windowWidth <= 478 ? '100%' : '24rem' }}>
           <div className="p-4">
             <button
               onClick={toggleMenu}

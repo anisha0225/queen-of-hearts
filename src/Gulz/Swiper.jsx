@@ -1,13 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Swiper as SwiperComponent, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay, FreeMode } from "swiper/modules";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Helmet } from "react-helmet";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/free-mode";
 
 const SwiperDemo = () => {
   const swiperRef = useRef();
+  const [isDragging, setIsDragging] = useState(false);
 
   return (
     <>
@@ -43,16 +45,24 @@ const SwiperDemo = () => {
             spaceBetween={10}
             slidesPerView={1}
             loop={true}
-            modules={[Navigation, Autoplay]}
+            modules={[Navigation, Autoplay, FreeMode]}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
+            freeMode={{
+              enabled: true,
+              sticky: false,
+              momentumRatio: 0.25
+            }}
+            grabCursor={true}
+            onSliderMove={() => setIsDragging(true)}
+            onTouchEnd={() => setIsDragging(false)}
+            className={`w-full h-full ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
             navigation={{
               prevEl: '.swiper-button-prev',
               nextEl: '.swiper-button-next',
             }}
-            className="w-full h-full"
           >
             <SwiperSlide className="w-full h-full">
               <div className="flex flex-col lg:flex-row h-full items-center">

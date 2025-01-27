@@ -185,9 +185,9 @@ const Hero = () => {
 
   return (
     <>
-      <div className="relative flex h-screen justify-center items-center ">
+      <div className="relative flex w-screen h-[135vw] sm:h-[155vw] md:h-screen lg:h-screen justify-center items-center lg:-mb-16 md:-mb-24 sm:-mb-32 -mb-[28vw] ">
         <video
-          className="relative h-full w-full object-cover"
+          className="relative z-[-1] h-full w-full object-cover lg:-mt-40 md:-mt-26 sm:-mt-56 -mt-[54vw]"
           autoPlay
           loop
           muted

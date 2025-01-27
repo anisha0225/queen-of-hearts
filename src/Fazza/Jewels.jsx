@@ -52,11 +52,11 @@ const Jewels = () => {
         </p>
       </div>
 
-      <div className="w-full overflow-hidden pb-12">
-        <section className="py-4 sm:py-4 md:py-4">
+      <div className="w-full overflow-hidden pb-8 ">
+        <section className="py-4 sm:py-2 md:py-4 ">
           <div className="relative">
             {/* For desktop (1024px and above) */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block ">
               <Swiper
                 modules={[Navigation, Autoplay]}
                 spaceBetween={30}
@@ -77,10 +77,10 @@ const Jewels = () => {
                   dots.forEach((dot, index) => {
                     if (index === swiper.realIndex) {
                       dot.classList.add('w-8', 'bg-black');
-                      dot.classList.remove('w-2', 'bg-gray-400');
+                      dot.classList.remove('w-2', 'bg-gray-900');
                     } else {
                       dot.classList.remove('w-8', 'bg-black');
-                      dot.classList.add('w-2', 'bg-gray-400');
+                      dot.classList.add('w-2', 'bg-gray-900');
                     }
                   });
                 }}
@@ -107,7 +107,7 @@ const Jewels = () => {
                   <span
                     key={index}
                     className={`slide-dot-desktop h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-900'
                     }`}
                     onClick={() => {
                       if (swiperRef.current) {
@@ -141,10 +141,10 @@ const Jewels = () => {
                   dots.forEach((dot, index) => {
                     if (index === swiper.realIndex) {
                       dot.classList.add('w-8', 'bg-black');
-                      dot.classList.remove('w-2', 'bg-gray-400');
+                      dot.classList.remove('w-2', 'bg-gray-900');
                     } else {
                       dot.classList.remove('w-8', 'bg-black');
-                      dot.classList.add('w-2', 'bg-gray-400');
+                      dot.classList.add('w-2', 'bg-gray-900');
                     }
                   });
                 }}
@@ -171,7 +171,7 @@ const Jewels = () => {
                   <span
                     key={index}
                     className={`slide-dot-tablet h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-900'
                     }`}
                     onClick={() => {
                       if (swiperRef.current) {
@@ -205,10 +205,10 @@ const Jewels = () => {
                   dots.forEach((dot, index) => {
                     if (index === swiper.realIndex) {
                       dot.classList.add('w-8', 'bg-black');
-                      dot.classList.remove('w-2', 'bg-gray-400');
+                      dot.classList.remove('w-2', 'bg-gray-900');
                     } else {
                       dot.classList.remove('w-8', 'bg-black');
-                      dot.classList.add('w-2', 'bg-gray-400');
+                      dot.classList.add('w-2', 'bg-gray-900');
                     }
                   });
                 }}
@@ -229,7 +229,7 @@ const Jewels = () => {
                   <span
                     key={index}
                     className={`slide-dot-mobile h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-900'
                     }`}
                     onClick={() => {
                       if (swiperRef.current) {

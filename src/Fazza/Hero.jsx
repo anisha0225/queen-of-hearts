@@ -86,152 +86,52 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // GSAP Menu Animation
-  useEffect(() => {
-    const menuTimeline = gsap.timeline();
-    
-    if (isMenuOpen) {
-      menuTimeline
-        .fromTo('.menu', 
-          { x: '-100%' },
-          { x: '0%', duration: 0.6, ease: 'power3.out' }
-        )
-        .fromTo('.menu p',
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.4 },
-          '-=0.2'
-        )
-        .fromTo('.menu h4',
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.3 },
-          '-=0.2'
-        )
-        .fromTo('.menu ul li',
-          { 
-            opacity: 0,
-            x: -30,
-            rotation: -5
-          },
-          { 
-            opacity: 1,
-            x: 0,
-            rotation: 0,
-            duration: 0.4,
-            stagger: 0.1,
-            ease: 'power2.out'
-          },
-          '-=0.1'
-        );
-    } else {
-      menuTimeline
-        .to('.menu ul li',
-          {
-            opacity: 0,
-            x: -50,
-            rotation: -10,
-            duration: 0.3,
-            stagger: 0.05,
-            ease: 'power2.in'
-          }
-        )
-        .to('.menu h4',
-          {
-            opacity: 0,
-            x: -30,
-            duration: 0.3,
-            ease: 'power2.in'
-          },
-          '-=0.2'
-        )
-        .to('.menu p',
-          {
-            opacity: 0,
-            x: -30,
-            duration: 0.3,
-            ease: 'power2.in'
-          },
-          '-=0.2'
-        )
-        .to('.menu',
-          {
-            x: '-100%',
-            duration: 0.5,
-            ease: 'power3.inOut',
-            onComplete: () => {
-              gsap.set(['.menu ul li', '.menu h4', '.menu p'], {clearProps: 'all'});
-            }
-          },
-          '-=0.2'
-        );
-    }
-  }, [isMenuOpen]);
-
-  // GSAP Search Overlay Height Animation
-  useEffect(() => {
-    if (isSearchOpen) {
-      gsap.fromTo(
-        searchOverlayRef.current,
-        { height: '16rem' },
-        { height: searchType === 'sku' ? '16rem' : '13rem', duration: 0.5, ease: 'power2.in' }
-      );
-    } else {
-      gsap.to(searchOverlayRef.current, {
-        height: 0,
-        duration: 0.5,
-        ease: 'power2.in',
-      });
-    }
-  }, [isSearchOpen, searchType]);
-
   return (
     <>
-      <div className='relative justify-center flex flex-col items-center pb-10'>
+      {/* eShop Button */}
+      <Link to="/gulz">
+        <div className="fixed -right-11 top-52 z-[9999]">
+          <p
+            className="fixed-shop-button flex items-center bg-yellow-600 text-white w-28 h-12 p-2 transition-all duration-300 hover:bg-white hover:text-black border-2 border-transparent hover:border-yellow-700 rotate-90"
+          >
+            <img src="/assets/sh_1.png" alt="Logo" className="h-6 mr-2 " />
+            eShop
+          </p>
+        </div>
+      </Link>
+
+      {/* Scroll to Top Button */}
+      <div 
+        ref={scrollToTopRef}
+        className="fixed right-4 md:right-10 lg:right-20 bottom-4 md:bottom-6 lg:bottom-9 z-[9999]"
+        style={{ opacity: 0 }}
+      >
+        <button
+          className="bg-blue-950 text-white p-3 md:p-3 lg:p-5 rounded-lg transition-all duration-300 hover:text-black"
+          onClick={scrollToTop}
+        >
+          <img src="/assets/colored-logo.png" alt="Scroll to Top" className="h-3 md:h-3 lg:h-3" />
+        </button>
+      </div>
+
+      <div className='relative justify-center flex flex-col items-center pb-10 z-[-1]'>
         <picture>
           <source media="(min-width: 1280px)" srcSet="/assets/Fazza-New-Hero-Banner-Desktop.jpg" />
           <source media="(min-width: 1024px)" srcSet="/assets/Fazza-New-Hero-Banner-Desktop.jpg" />
           <source media="(min-width: 768px)" srcSet="/assets/Fazza-New-Hero-Banner-Desktop.jpg" />
           <source media="(max-width: 767px)" srcSet="/assets/Fazza-Landing-Page-New-Hero-Banner-Mobile.jpg" />
           <img 
-            
-            className="w-screen h-full max-w-full min-h-[70vh] sm:h-[150vh] md:h-[50vw] lg:h-[40vw] xl:h-[50vw] object-cover md:mt-10"
+            className="w-screen h-full max-w-full min-h-[70vh] sm:h-[150vh] md:h-[50vw] lg:h-[40vw] xl:h-[50vw] object-cover md:-mt-20 lg:-mt-28 sm:-mt-52 -mt-[28vw] z-[-2]"
             src="/assets/Fazza-Landing-Page-New-Hero-Banner-Mobile.jpg"
             alt="Hero Banner"
           />
         </picture>
 
         <div className='flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 w-full max-w-7xl mx-auto'>
-          <img className='sm:h-44 sm:w-32  md:h-80 md:w-80 lg:w-80 lg:h-80 h-40 w-40 -mt-3 sm:-mt-14 md:-mt-44 lg:-mt-44' id="fazza" src="/assets/Fazza-Golden-Logo.svg"/>
-          <p className='lg:-mt-12 -mt-5 leading-7 font-centuryGothic w-full md:w-[90%] lg:w-[90%] xl:w-[87%] text-center text-[#757575] text-base sm:text-lg md:text-xl lg:text-2xl tracking-widest'>
+          <img className='sm:h-44 sm:w-32  md:h-80 md:w-80 lg:w-80 lg:h-80 h-36 w-36 -mt-3 sm:-mt-14 md:-mt-44 lg:-mt-44' id="fazza" src="/assets/Fazza-Golden-Logo.svg"/>
+          <p className=' md:-mt-10 -mt-1 xl:-mt-10 lg:-mt-9 leading-7 font-centuryGothic w-full md:w-[90%] lg:w-[90%] xl:w-[87%] text-center text-[#757575] text-sm md:text-m lg:text-m tracking-widest'>
           Every item of Fazza jewellery is more than just an accessory; it is a timeless treasure that adds long-term value to any woman&apos;s collection. Fazza designs with the goal of making traditional Polki jewellery more accessible, combining the charm of heritage with modern elegance in each piece.
           </p>
-        </div>
-
-        <div className="w-full">
-          {/* eShop Button */}
-          <Link to="/gulz">
-            <div className="fixed -right-11 top-52 z-50">
-              <p
-                className="fixed-shop-button flex items-center bg-yellow-600 text-white w-28 h-12 p-2 transition-all duration-300 hover:bg-white hover:text-black border-2 border-transparent hover:border-yellow-700 rotate-90"
-              >
-                <img src="/assets/sh_1.png" alt="Logo" className="h-6 mr-2" />
-                eShop
-              </p>
-            </div>
-          </Link>
-
-          {/* Scroll to Top Button */}
-          <div 
-            ref={scrollToTopRef}
-            className="fixed right-4 md:right-10 lg:right-20 bottom-4 md:bottom-6 lg:bottom-9 z-50"
-            style={{ opacity: 0 }}
-          >
-            <button
-              className="bg-blue-950 text-white p-3 md:p-3 lg:p-5 rounded-lg transition-all duration-300 hover:text-black"
-              onClick={scrollToTop}
-            >
-              <img src="/assets/colored-logo.png" alt="Scroll to Top" className="h-3 md:h-3 lg:h-3" />
-            </button>
-          </div>
         </div>
       </div>
     </>

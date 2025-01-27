@@ -3,12 +3,13 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 
-const Navbar = () => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchType, setSearchType] = useState('sku');
   const searchOverlayRef = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,6 +18,20 @@ const Navbar = () => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      if (scrollPercentage >= 2) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -123,7 +138,7 @@ const Navbar = () => {
   const marqueeText = "We Ship Worldwide | Free Shipping Across India. For further details, Please call: +91 9884039111 | We design, manufacture & retail jewellery using NATURAL DIAMONDS only | All our Jewels are BIS Hallmarked & Diamonds are ethically sourced & certified by world-renowned Gemological Institutes.";
 
   return (
-    <>
+    <div className={`fixed top-0 left-0 z-[10] w-full shadow-md transition-transform duration-300 ${show ? 'visible' : 'hidden'}`}>
       {/* Mobile Navbar */}
       <div className="md:hidden">
         <div className="top-0 left-0 w-full bg-white text-black py-2 z-20">
@@ -149,37 +164,32 @@ const Navbar = () => {
           <Link to="/" className="absolute top-0 left-0 z-30 text-white font-medium text-sm px-5 py-1 bg-black hover:underline" style={{textDecorationThickness: '1px', textUnderlineOffset: '6px'}}>
             VISIT BRAND WEBSITE
           </Link>
-          <div className="whitespace-nowrap px-4 overflow-hidden lg:w-[95%] md:w-[83%] sm:w-[70%]">
-            <div className="animate-marquee inline-block text-sm ">
+          <div className="whitespace-nowrap px-4 overflow-hidden lg:w-[95%] md:w-[83%] sm:w-[70%] ">
+            <p className="animate-marquee inline-block text-xs xl:text-sm md:text-sm lg:text-sm sm:text-xs">
               {marqueeText}
               &nbsp;&nbsp;&nbsp;
               {marqueeText}
-            </div>
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="top-10 left-0 w-full mt-2 md:mt-0 lg:mt-0 py-1 md:py-2 lg:py-2 sm:py-2 px-2 sm:px-6 flex items-center justify-between z-20 text-white">
-
-
-
-
-        
+      <div className="top-10 left-0 w-full md:mt-0 lg:mt-0 py-1 md:py-2 lg:py-2 sm:py-2 px-2 sm:px-6 flex items-center justify-between z-20 text-black bg-white">
         <div className="flex items-center" onClick={toggleMenu}>
-          <img src="/assets/output-onlinepngtools.png" alt="Left Logo" className="h-7 sm:h-8 mr-2 sm:mr-4 px-2 sm:px-10 cursor-pointer"/>
+          <img src="/assets/menu-black.png" alt="Left Logo" className="h-7 sm:h-8 mr-2 sm:mr-4 px-2 sm:px-10 cursor-pointer"/>
         </div>
 
         <div className="flex items-center">
-          <img src="/assets/fazza-white-logo.png" alt="Middle Logo" className="h-8 sm:h-12 cursor-pointer" />
-          <div className="border-l border-white h-4 sm:h-6 mx-2 sm:mx-4" id="divide"></div>
-          <a href="/" className="font-medium text-xs sm:text-xl text-white">
+          <img src="/assets/Fazza logo.svg" alt="Middle Logo" className="h-6 sm:h-12 cursor-pointer" />
+          <div className="border-l border-black h-4 sm:h-6 mx-2 sm:mx-4" id="divide"></div>
+          <a href="/" className="font-medium text-xs sm:text-xl text-black">
             QUEEN OF HEARTS
           </a>
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-4 px-2 sm:px-8">
-          <img src="/assets/search-removebg-preview.png" alt="Search" className="h-4 sm:h-6 cursor-pointer" onClick={toggleSearch} />
-          <img src="/assets/arrows.png" alt="Location" className="h-4 sm:h-6 cursor-pointer" onClick={openLocation} />
+          <img src="/assets/search-black.png" alt="Search" className="h-4 sm:h-6 cursor-pointer" onClick={toggleSearch} />
+          <img src="/assets/location-black.png" alt="Location" className="h-4 sm:h-6 cursor-pointer" onClick={openLocation} />
         </div>
       </div>
 
@@ -316,8 +326,8 @@ const Navbar = () => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
-export default Navbar;
+export default Header;

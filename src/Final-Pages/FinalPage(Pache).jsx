@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from './Pache/Navbar'
-import Hero from './Pache/Hero'
-import PacheCollection from './Pache/PacheCollection'
+import Navbar from '../Pache/Navbar'
+import Hero from '../Pache/Hero'
+import PacheCollection from '../Pache/PacheCollection'
 
 const FinalPage4 = () => {
   return (

@@ -13,7 +13,7 @@ const PacheCollection = () => {
         {/* Left side - Image */}
         <div className="w-full lg:w-1/2 mx-4 sm:mx-8 lg:ml-20">
           <img 
-            src="/public/assets/Pache-Intro-Img.png" 
+            src="/assets/Pache-Intro-Img.png" 
             alt="Pache Collection"
             className="w-full h-[20rem] sm:h-[30rem] lg:h-[40rem] object-cover"
           />

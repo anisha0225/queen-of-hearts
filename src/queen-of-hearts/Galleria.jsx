@@ -52,9 +52,9 @@ const Galleria = () => {
         {/* Modal */}
         <div
           id="imageModal"
-          className="hidden fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8"
+          className="hidden fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm z-50 flex items-start justify-center p-2 sm:p-4 md:p-6 lg:p-8"
         >
-          <div className="relative w-full h-full flex items-center justify-center">
+          <div className="relative w-full h-full flex items-start justify-center pt-[5vh]">
             <img
               id="modalImage"
               src="/assets/Khwaahish-Store-img.jpg"
@@ -82,7 +82,7 @@ const Galleria = () => {
                   const y = e.clientY - rect.top;
                   const xPercent = (x / rect.width) * 100;
                   const yPercent = (y / rect.height) * 100;
-                  img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                  img.style.transformOrigin = `${xPercent}% 0%`; // Always zoom from top
                 }
               }}
               onTouchMove={(e) => {

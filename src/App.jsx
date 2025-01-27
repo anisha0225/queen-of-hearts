@@ -11,11 +11,11 @@ import React from 'react'
 // import Footer from './queen-of-hearts/Footer'
 // import Navbar from './queen-of-hearts/Navbar'
 import {Route,Routes} from "react-router-dom"
-import FinalPage from './FinalPage(festara)'
-import FinalPage1 from './FinalPage(q-o-h)'
-import FinalPage2 from './FinalPage(Gulz)'
-import FinalPage3 from './FinalPage(Fazza)'
-import FinalPage4 from './FinalPage(Pache)'
+import FinalPage from './Final-Pages/FinalPage(festara)'
+import FinalPage1 from './Final-Pages/FinalPage(q-o-h)'
+import FinalPage2 from './Final-Pages/FinalPage(Gulz)'
+import FinalPage3 from './Final-Pages/FinalPage(Fazza)'
+import FinalPage4 from './Final-Pages/FinalPage(Pache)'
 const App = () => {
 
   return (

@@ -11,9 +11,22 @@ gsap.registerPlugin(ScrollTrigger)
 
 const SwiperContainer = () => {
   const swiperRef = useRef(null)
+  const [activeIndex, setActiveIndex] = React.useState(0)
+  const swiperInstanceRef = useRef(null)
+
+  const handleDotClick = (index) => {
+    if (swiperInstanceRef.current) {
+      swiperInstanceRef.current.slideTo(index)
+      setActiveIndex(index)
+    }
+  }
+
+  const handleContainerClick = (index) => {
+    handleDotClick(index)
+  }
 
   return (
-    <section ref={swiperRef} className="py-10">
+    <section ref={swiperRef} className="py-10 mb-16 ">
       <div className="max-w-screen-3xl mx-auto px-4 sm:px-8 lg:px-14">
         <div className="relative">
           {/* For larger screens (above 1025px) */}
@@ -25,28 +38,24 @@ const SwiperContainer = () => {
               navigation={{
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
+                disabledClass: 'opacity-100' // Override disabled state opacity
               }}
               autoplay={{
                 delay: 4000,
                 disableOnInteraction: false,
               }}
-              loop={true}
-              className="relative"
+              loop={false}
+              className="relative [&_.swiper-button-disabled]:!text-black" // Force black color even when disabled
+              onSwiper={(swiper) => {
+                swiperInstanceRef.current = swiper
+              }}
               onSlideChange={(swiper) => {
-                const dots = document.querySelectorAll('.slide-dot');
-                dots.forEach((dot, index) => {
-                  if (index === swiper.realIndex) {
-                    dot.classList.add('w-7', 'bg-black');
-                    dot.classList.remove('w-2', 'bg-gray-400');
-                  } else {
-                    dot.classList.remove('w-7', 'bg-black');
-                    dot.classList.add('w-2', 'bg-gray-400');
-                  }
-                });
+                setActiveIndex(swiper.realIndex)
               }}
             >
+              {/* Rest of the SwiperSlides remain exactly the same */}
               <SwiperSlide className="cursor-grab active:cursor-grabbing">
-                <div className="flex flex-col md:flex-row items-center bg-neutral-100 w-[100%] justify-center text-center mx-auto">
+                <div className="flex flex-col md:flex-row items-center bg-neutral-100 w-[100%] justify-center text-center mx-auto" onClick={() => handleContainerClick(0)}>
                   <div className="w-full md:w-2/3">
                     <img 
                       src="/assets/Khwaahish-Store-img.jpg" 
@@ -62,7 +71,7 @@ const SwiperContainer = () => {
               </SwiperSlide>
               
               <SwiperSlide className="cursor-grab active:cursor-grabbing">
-                <div className="flex flex-col md:flex-row items-center bg-neutral-100 w-[100%] justify-center text-center mx-auto">
+                <div className="flex flex-col md:flex-row items-center bg-neutral-100 w-[100%] justify-center text-center mx-auto" onClick={() => handleContainerClick(1)}>
                   <div className="w-full md:w-2/3">
                     <img 
                       src="/assets/Curators-Tale-with-watermark-img.jpg" 
@@ -79,7 +88,7 @@ const SwiperContainer = () => {
               </SwiperSlide>
               
               <SwiperSlide className="cursor-grab active:cursor-grabbing">
-                <div className="flex flex-col md:flex-row items-center bg-neutral-100 w-[100%] justify-center text-center mx-auto">
+              <div className="flex flex-col md:flex-row items-center bg-neutral-100 w-[100%] justify-center text-center mx-auto">
                   <div className="w-full md:w-2/3">
                     <div className="w-full h-[300px] sm:h-[400px] md:h-[540px] border-[0.0005rem] border-gray-300">
                       <div className="grid grid-cols-3 h-full">
@@ -117,7 +126,7 @@ const SwiperContainer = () => {
                         </div>
                         <div className="border-[0.0005rem] border-gray-300 bg-white flex flex-col items-center justify-center">
                           <img src="/assets/Promise-Sec-Icons-9.png" alt="Icon 9" className="w-28 h-9"/>
-                          <p className="text-xs mt-2 px-6">“Natural Diamonds” Certification by International Gemological Laboratories</p>
+                          <p className="text-xs mt-2 px-6">&quot;Natural Diamonds&quot; Certification by International Gemological Laboratories</p>
                         </div>
                       </div>
                     </div>
@@ -132,32 +141,20 @@ const SwiperContainer = () => {
             <div className="absolute -bottom-12 left-0 right-0 flex justify-center items-center space-x-1 z-10">
               <div className="swiper-button-prev !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
               {[...Array(3)].map((_, index) => (
-                <span
+                <button
                   key={index}
-                  className={`slide-dot h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    index === 0 ? 'w-7 bg-black' : 'w-2 bg-gray-400'
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === activeIndex ? 'w-7 bg-black' : 'w-2 bg-gray-900'
                   }`}
-                  onClick={() => {
-                    const swiper = document.querySelector('.swiper').swiper;
-                    swiper.slideTo(index);
-                    const dots = document.querySelectorAll('.slide-dot');
-                    dots.forEach((dot, i) => {
-                      if (i === index) {
-                        dot.classList.add('w-7', 'bg-black');
-                        dot.classList.remove('w-2', 'bg-gray-400');
-                      } else {
-                        dot.classList.remove('w-7', 'bg-black');
-                        dot.classList.add('w-2', 'bg-gray-400');
-                      }
-                    });
-                  }}
-                ></span>
+                  onClick={() => handleDotClick(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                ></button>
               ))}
               <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
             </div>
           </div>
 
-          {/* For screens 1025px and below */}
+          {/* Mobile version remains exactly the same */}
           <div className="min-[1026px]:hidden space-y-20">
             <div className="flex flex-col items-center bg-neutral-100 shadow-md w-[93%] justify-center text-center mx-auto">
               <img 
@@ -219,7 +216,7 @@ const SwiperContainer = () => {
                 </div>
                 <div className="col-span-2 md:col-span-1 border-[0.00001rem] bg-white border-gray-200 flex flex-col items-center justify-center p-4">
                   <img src="/assets/Promise-Sec-Icons-9.png" alt="Icon 9" className="w-32 h-7 md:w-28 md:h-9"/>
-                  <p className="text-[10px] md:text-xs mt-2 px-2 md:px-6">"Natural Diamonds" Certification by International Gemological Laboratories</p>
+                  <p className="text-[10px] md:text-xs mt-2 px-2 md:px-6">&quot;Natural Diamonds&quot; Certification by International Gemological Laboratories</p>
                 </div>
               </div>
               <div className="w-full p-4 sm:p-6 text-center">
@@ -229,7 +226,6 @@ const SwiperContainer = () => {
             </div>
 
 
-            
           </div>
         </div>
       </div>

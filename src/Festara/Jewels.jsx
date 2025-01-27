@@ -36,9 +36,26 @@ const Jewels = () => {
   const [activeTabletIndex, setActiveTabletIndex] = useState(0);
   const [activeMobileIndex, setActiveMobileIndex] = useState(0);
 
+  const handleDotClick = (index, view) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);
+      switch(view) {
+        case 'desktop':
+          setActiveIndex(index);
+          break;
+        case 'tablet':
+          setActiveTabletIndex(index);
+          break;
+        case 'mobile':
+          setActiveMobileIndex(index);
+          break;
+      }
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center pb-8">
-      <div className="flex flex-col items-center justify-center px-4 sm:px-0">
+    <div className="flex flex-col items-center pb-8 z-[-1] -mb-20 sm:-mb-5 md:-mb-10 lg:-mb-0">
+      <div className="flex flex-col items-center justify-center px-4 sm:px-0 z-[-2]">
         <div className="flex items-center justify-center mb-3">
           <hr className="w-8 sm:w-16 h-0.5 bg-gray-700 border-0 rounded" />
           <span className="text-lg sm:text-3xl text-gray-700 mx-2 sm:mx-4">Jewels at a Glance</span>
@@ -49,7 +66,7 @@ const Jewels = () => {
         </p>
       </div>
 
-      <div className="w-full overflow-hidden pb-12">
+      <div className="w-full overflow-hidden pb-8 z-[-2]">
         <section className="py-4 sm:py-4 md:py-4">
           <div className="relative">
             {/* For larger screens (>1024px) */}
@@ -93,13 +110,9 @@ const Jewels = () => {
                   <span
                     key={index}
                     className={`slide-dot h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === activeIndex ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                      index === activeIndex ? 'w-8 bg-black' : 'w-2 bg-gray-900'
                     }`}
-                    onClick={() => {
-                      if (swiperRef.current) {
-                        swiperRef.current.slideTo(index);
-                      }
-                    }}
+                    onClick={() => handleDotClick(index, 'desktop')}
                   ></span>
                 ))}
                 <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
@@ -146,13 +159,9 @@ const Jewels = () => {
                   <span
                     key={index}
                     className={`slide-dot-tablet h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === activeTabletIndex ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                      index === activeTabletIndex ? 'w-8 bg-black' : 'w-2 bg-gray-900'
                     }`}
-                    onClick={() => {
-                      if (swiperRef.current) {
-                        swiperRef.current.slideTo(index);
-                      }
-                    }}
+                    onClick={() => handleDotClick(index, 'tablet')}
                   ></span>
                 ))}
                 <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
@@ -193,13 +202,9 @@ const Jewels = () => {
                   <span
                     key={index}
                     className={`slide-dot-mobile h-1.5 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === activeMobileIndex ? 'w-6 sm:w-8 bg-black' : 'w-1.5 sm:w-2 bg-gray-400'
+                      index === activeMobileIndex ? 'w-6 sm:w-8 bg-black' : 'w-1.5 sm:w-2 bg-gray-900'
                     }`}
-                    onClick={() => {
-                      if (swiperRef.current) {
-                        swiperRef.current.slideTo(index);
-                      }
-                    }}
+                    onClick={() => handleDotClick(index, 'mobile')}
                   ></span>
                 ))}
                 <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-6 !h-6 sm:!w-8 sm:!h-8 !mt-0 after:!text-lg sm:after:!text-xl cursor-pointer"></div>

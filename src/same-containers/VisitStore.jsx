@@ -2,7 +2,7 @@ import React from 'react'
 
 const VisitStore = () => {
   return (
-    <div className='relative flex justify-center min-h-[300px] h-[45vh] sm:h-[60vh] md:h-[80vh] bg-cover bg-center items-center bg-[url("/public/assets/khwaahish-inner-view.jpg")] overflow-hidden w-full'>
+    <div className='relative flex justify-center min-h-[300px] h-[45vh] sm:h-[60vh] md:h-[80vh] bg-cover bg-center items-center bg-[url("/public/assets/khwaahish-inner-view.jpg")] overflow-hidden w-full '>
       <div className='absolute w-[95%] max-w-[1200px] min-h-[180px] h-auto py-8 bg-black/60'>
         <div className='relative flex flex-col justify-center items-center text-white px-4 sm:px-8 md:px-12 lg:px-20'>
           <div className='w-full max-w-[800px]'>
