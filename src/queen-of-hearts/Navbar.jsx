@@ -223,7 +223,7 @@ const Navbar = () => {
 
       {/*Menu*/}
       {isMenuOpen && (
-        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto">
+        <div className="menu fixed top-0 left-0 w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto md:w-[24rem] lg:w-[24rem] sm:w-full max-w-full" style={{ width: window.innerWidth <= 478 ? '100%' : '24rem' }}>
           <div className="p-4">
             <button
               onClick={toggleMenu}

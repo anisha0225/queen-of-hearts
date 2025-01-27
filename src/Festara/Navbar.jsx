@@ -207,7 +207,7 @@ const Navbar = () => {
 
         <div className="flex items-center">
         
-            <img src="/assets/download.svg" alt="Middle Logo" className="h-10 sm:h-16 cursor-pointer" />
+            <img src="/assets/download.svg" alt="Middle Logo" className="h-8 sm:h-14 cursor-pointer" />
         
           <div className="border-l border-white h-4 sm:h-6 mx-2 sm:mx-4" id="divide"></div>
           <a href="/" className="font-medium text-base md:text-2xl sm:text-xl text-white">
@@ -223,7 +223,8 @@ const Navbar = () => {
 
       {/*Menu*/}
       {isMenuOpen && (
-        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto">
+                <div className="menu fixed top-0 left-0 w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto md:w-[24rem] lg:w-[24rem] sm:w-full max-w-full" style={{ width: window.innerWidth <= 478 ? '100%' : '24rem' }}>
+
           <div className="p-4">
             <button
               onClick={toggleMenu}

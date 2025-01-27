@@ -5,12 +5,12 @@ const Recomendation = () => {
 
   const recomendation = [
     {
-      img: "/svgs/crown.png",
+      img: "/assets/svgs/crown.png",
       title: "modern",
       alt: "Modern jewelry collection",
     },
     {
-      img: "/svgs/wedding-rings.png",
+      img: "/assets/svgs/wedding-rings.png",
       title: "engagement", 
       alt: "Engagement rings and jewelry",
     },
@@ -190,7 +190,7 @@ const Recomendation = () => {
 
 
   return (
-    <section className="md:min-h-[150vh] py-10 w-full bg-[#F7ECEB] font-light p-3 md:p-6" aria-label="Jewelry Recommendations">
+    <section className=" py-12 w-full bg-[#F7ECEB] font-light p-3 md:p-6" aria-label="Jewelry Recommendations">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center mt-8 md:mt-12">
           Life is a Party, Bling in Style !
@@ -211,11 +211,11 @@ const Recomendation = () => {
           <span className="flex border-b-2 border-[#58282a] w-16 sm:w-20 md:w-24 mt-2 mx-auto"></span>
         </h1>
       
-        <div className="w-[95vw] md:w-[80vw] h-[15vh] md:h-[10vw] flex relative left-1/2 -translate-x-1/2 bg-white shadow-[0_4px_6px_1px_rgba(0,0,0,0.1),0_0px_-1px_rgba(0,0,0,0.1)] mt-6 md:mt-10 overflow-hidden" role="region" aria-label="Jewelry style recommendations carousel">
+        <div className="w-[98vw] md:w-[85vw] sm:w-[80vw] h-[15vh] md:h-[15vw] flex relative left-1/2 -translate-x-1/2 bg-white shadow-[0_4px_6px_1px_rgba(0,0,0,0.1),0_0px_-1px_rgba(0,0,0,0.1)] mt-6 md:mt-10 overflow-hidden" role="region" aria-label="Jewelry style recommendations carousel">
           {/* Left blur overlay */}
           <div className="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-[#F7ECEB] to-transparent z-40"></div>
           
-          <div className="w-[620%] sm:w-[420%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee">
+          <div className="w-[620%] sm:w-[420%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee3">
             {recomendation.map((item, index) => (
               <div
                 key={index}
@@ -263,11 +263,11 @@ const Recomendation = () => {
           <span className="flex border-b-2 border-[#58282a] w-16 sm:w-20 md:w-24 mt-2 mx-auto"></span>
         </h2>
 
-        <div className="md:hidden flex w-[95%] mx-auto h-20 gap-1">
+        <div className="md:hidden flex w-[90%] px-10 mx-auto h-20 gap-1">
           <div 
             onClick={() => setActiveButton("rings")}
             className={`w-[25%] h-full flex flex-col justify-center items-center rounded-lg ${
-              activeButton === "rings" ? "bg-[#fffcfb] border border-amber-950" : ""
+              activeButton === "rings" ? "bg-[#fffcfb] border border-amber-950 " : ""
             }`}
           >
             <div className="w-10 h-10 bg-red-500"></div>
@@ -302,7 +302,13 @@ const Recomendation = () => {
           </div>
         </div>
 
-        <div className="md:w-1/2 w-[95%] md:h-20 md:flex hidden items-center justify-between relative left-1/2 -translate-x-1/2 mt-2" role="tablist" aria-label="Jewelry categories">
+
+
+
+
+        
+
+        <div className="md:w-[75vw] sm:w-1/3 lg:w-[55vw] xl:[50vw] w-[95%] md:h-20 md:flex hidden items-center justify-between relative left-1/2 -translate-x-1/2 mt-2 space-x-5" role="tablist" aria-label="Jewelry categories">
           <button
             onClick={() => setActiveButton("rings")}
             className={`w-[10rem] h-fit flex items-center justify-center button1 rounded-full ${
@@ -358,12 +364,12 @@ const Recomendation = () => {
         </div>
 
         <div 
-          className="md:w-[60%] w-[95%] md:h-[10vw] h-[15vh] bg-#F72426 rounded-2xl flex justify-center items-center relative left-1/2 -translate-x-1/2 mt-2 overflow-hidden border border-amber-950"
+          className="md:w-[60%] w-[95%] md:h-[35vw] lg:h-[25vh] sm:h-[15vh] h-[25vh] bg-#F72426 rounded-2xl flex justify-center items-center relative left-1/2 -translate-x-1/2 mt-2 overflow-hidden border border-amber-950"
           role="tabpanel"
           id={`${activeButton}-panel`}
           aria-label={`${activeButton} styles carousel`}
         >
-          <div className={`w-[520%] bg-[#f9f4f3] h-full absolute sm:w-[350%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee2 ${activeButton === "rings" ? "z-30" : "z-0"}`}>
+          <div className={`w-[520%] bg-[#f9f4f3] h-full absolute sm:w-[350%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee4 ${activeButton === "rings" ? "z-30" : "z-0"}`}>
             {ringData.map((item, index) => (
               <div
                 key={index}
@@ -399,7 +405,7 @@ const Recomendation = () => {
               </div>
             ))}
           </div>
-          <div className={`w-[420%] bg-white h-full absolute sm:w-[250%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee2 ${activeButton === "bracelets" ? "z-30" : "z-0"}`}>
+          <div className={`w-[420%] bg-white h-full absolute sm:w-[250%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee4 ${activeButton === "bracelets" ? "z-30" : "z-0"}`}>
             {braceletData.map((item, index) => (
               <div
                 key={index}
@@ -435,7 +441,7 @@ const Recomendation = () => {
               </div>
             ))}
           </div>
-          <div className={`w-[520%] bg-white h-full absolute sm:w-[350%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee2 ${activeButton === "necklaces" ? "z-30" : "z-0"}`}>
+          <div className={`w-[520%] bg-white h-full absolute sm:w-[350%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee4 ${activeButton === "necklaces" ? "z-30" : "z-0"}`}>
             {necklaceData.map((item, index) => (
               <div
                 key={index}
@@ -471,7 +477,7 @@ const Recomendation = () => {
               </div>
             ))}
           </div>
-          <div className={`w-[620%] bg-white h-full absolute sm:w-[450%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee2 ${activeButton === "earrings" ? "z-30" : "z-0"}`}>
+          <div className={`w-[620%] bg-white h-full absolute sm:w-[450%] flex flex-shrink-0 justify-around items-center px-2 animate-marquee4 ${activeButton === "earrings" ? "z-30" : "z-0"}`}>
             {earringsData.map((item, index) => (
               <div
                 key={index}
@@ -508,6 +514,10 @@ const Recomendation = () => {
             ))}
           </div>
         </div>
+
+
+
+        
       </div>
     </section>
   );

@@ -2,11 +2,11 @@ import React from 'react'
 
 const MovingSection = () => {
   return (
-    <section className="py-16 sm:py-12 text-center w-full">
+    <section className="py-20 sm:py-12 text-center w-full">
       <p className="text-lg sm:text-xl text-gray-800 mb-3 tracking-widest px-4 sm:px-0">
         Queen Of Hearts- Chennai&apos;s crown jewel of partywear, where lightweight doesn&apos;t mean low on drama.
       </p>
-      <p className="text-xs sm:text-sm text-gray-500 tracking-widest px-4 sm:px-40 mb-10 leading-8">
+      <p className="text-[3vw] md:text-[1.4vw] lg:text-[1vw] text-gray-500 tracking-widest px-[4vw] md:px-[10vw] lg:px-[15vw] mb-[3vw] leading-relaxed">
         With 20 years of expertise, Khwaahish now introduces Queen of Hearts - a curated galleria of lightweight fine jewellery crafted for the modern lifestyle. We believe in jewellery that speaks for itself—bold, beautiful, and effortless. Our handpicked collections are designed to make you shine, without weighing you down. At Queen Of Hearts, every piece tells a story—and that story is yours.
       </p>
 

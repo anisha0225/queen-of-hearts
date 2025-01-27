@@ -63,29 +63,29 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="w-full md:h-[110vh] bg-[#F7ECEB]">
-    <h1 className="text-xl sm:text-2xl md:text-[1.7rem] text-center sm:mt-3 md:-mt-4 uppercase text-[#4F2426] tracking-[0.2rem] sm:tracking-[0.4rem] mb-6">
-          Testimonals
-          <span className="flex border-b-2 border-[#58282a] w-16 sm:w-20 md:w-24 mt-2 mx-auto "></span>
-        </h1>
+    <div className="w-full sm:-mt-3 mb:-mt-0 lg:-mt-0 md:h-[110vh] bg-[#F7ECEB] ">
+      <h1 className="text-xl sm:text-2xl md:text-[1.7rem] text-center sm:mt-3 md:-mt-4 uppercase text-[#4F2426] tracking-[0.2rem] sm:tracking-[0.4rem] mb-6">
+        Testimonals
+        <span className="flex border-b-2 border-[#58282a] w-16 sm:w-20 md:w-24 mt-2 mx-auto"></span>
+      </h1>
 
       <Swiper
         ref={swiperRef}
         modules={[Autoplay]}
         spaceBetween={30}
-        slidesPerView={swipe}
+        slidesPerView={window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3}
         loop={true}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
         }}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        className="w-[90%] md:w-[80%] mx-auto"
+        className="w-[90%] md:w-[85%] lg:w-[80%] mx-auto"
       >
         <SwiperSlide>
-          <div className="h-[55vh] cursor-pointer w-full md:w-[25vw] text-center bg-white p-8 flex flex-col justify-between">
+          <div className="h-[55vh] md:h-[50vh] lg:h-[55vh] cursor-pointer w-full text-center bg-white p-8 flex flex-col justify-between">
             <div>
-              <div className=" h-12 w-12 ">
+              <div className="h-12 w-12">
                 <img
                   className="w-full h-full object-contain"
                   src="/assets/eshop/testtimonialLogo.svg"
@@ -96,12 +96,12 @@ const Testimonial = () => {
                 Seeing the spectacular designs at Khwaahish , my heart really
                 desires to shop there very soon. This entire line is very
                 customized, so lightweight and beautiful.. I am just loving
-                them".{" "}
+                them&quot;.{" "}
               </p>
             </div>
 
             <div className="w-full flex gap-5 items-center">
-              <div className=" h-20 w-20 bg-red-500 rounded-full overflow-hidden">
+              <div className="h-20 w-20 bg-red-500 rounded-full overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
                   src="/assets/eshop/testtimonialPersons/swathi-rekha.avif"
@@ -117,22 +117,22 @@ const Testimonial = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="h-[55vh] cursor-pointer w-full md:w-[25vw] text-center bg-white p-8 flex flex-col justify-between">
+          <div className="h-[55vh] md:h-[50vh] lg:h-[55vh] cursor-pointer w-full text-center bg-white p-8 flex flex-col justify-between">
             <div>
-              <div className=" h-12 w-12 ">
+              <div className="h-12 w-12">
                 <img
                   className="w-full h-full object-contain"
                   src="/assets/eshop/testtimonialLogo.svg"
                   alt=""
                 />
               </div>
-              <p className="text-left mt-3 font-light text-[0.85rem] tracking-widesr leading-6 text-gray-700">
+              <p className="text-left mt-3 font-light text-[0.85rem] tracking-wider leading-6 text-gray-700">
                 I love the new collection Gulz… its simply beautiful. Every single piece is gorgeous, wearable and extremely well made. The entire look and feel is very international by all means. Khwaahish is family to me and their pieces are just stunning.
               </p>
             </div>
 
             <div className="w-full flex gap-5 items-center">
-              <div className=" h-20 w-20 bg-red-500 rounded-full overflow-hidden">
+              <div className="h-20 w-20 bg-red-500 rounded-full overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
                   src="/assets/eshop/testtimonialPersons/jyothi.avif"
@@ -148,21 +148,21 @@ const Testimonial = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="h-[55vh] cursor-pointer w-full md:w-[25vw] text-center bg-white p-8 flex flex-col justify-between">
+          <div className="h-[55vh] md:h-[50vh] lg:h-[55vh] cursor-pointer w-full text-center bg-white p-8 flex flex-col justify-between">
             <div>
-              <div className=' h-12 w-12 '>
-                <img className='w-full h-full object-contain' src="/assets/eshop/testtimonialLogo.svg" alt="" />
+              <div className="h-12 w-12">
+                <img className="w-full h-full object-contain" src="/assets/eshop/testtimonialLogo.svg" alt="" />
               </div>
               <p className="text-left mt-3 font-light text-[0.85rem] tracking-wider leading-6 text-gray-700">
                 When it comes to Khwaahish.. its my go to place for smart
                 jewellery. And regarding the collection, I love love the jacket
-                chandelier diamond earrings and the other unique designs. It's so
-                wearable and it's so me.
+                chandelier diamond earrings and the other unique designs. It&apos;s so
+                wearable and it&apos;s so me.
               </p>
             </div>
 
-            <div className='w-full flex gap-5 items-center'>
-              <div className=" h-20 w-20 bg-red-500 rounded-full overflow-hidden">
+            <div className="w-full flex gap-5 items-center">
+              <div className="h-20 w-20 bg-red-500 rounded-full overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
                   src="/assets/eshop/testtimonialPersons/Pratibha.avif"
@@ -178,10 +178,10 @@ const Testimonial = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="h-[55vh] cursor-pointer w-full md:w-[25vw] text-center bg-white p-8 flex flex-col justify-between">
+          <div className="h-[55vh] md:h-[50vh] lg:h-[55vh] cursor-pointer w-full text-center bg-white p-8 flex flex-col justify-between">
             <div>
-              <div className=' h-12 w-12 '>
-                <img className='w-full h-full object-contain' src="/assets/eshop/testtimonialLogo.svg" alt="" />
+              <div className="h-12 w-12">
+                <img className="w-full h-full object-contain" src="/assets/eshop/testtimonialLogo.svg" alt="" />
               </div>
               <p className="text-left mt-3 font-light text-[0.85rem] tracking-wider leading-6 text-gray-700">
                 With Khwaahish my journey started very long ago right from their
@@ -191,8 +191,8 @@ const Testimonial = () => {
               </p>
             </div>
 
-            <div className='w-full flex gap-5 items-center'>
-              <div className=" h-20 w-20 bg-red-500 rounded-full overflow-hidden">
+            <div className="w-full flex gap-5 items-center">
+              <div className="h-20 w-20 bg-red-500 rounded-full overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
                   src="/assets/eshop/testtimonialPersons/Chhavi.avif"
@@ -208,18 +208,18 @@ const Testimonial = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="h-[55vh] cursor-pointer w-full md:w-[25vw] text-center bg-white p-8 flex flex-col justify-between">
+          <div className="h-[55vh] md:h-[50vh] lg:h-[55vh] cursor-pointer w-full text-center bg-white p-8 flex flex-col justify-between">
             <div>
-              <div className=' h-12 w-12 '>
-                <img className='w-full h-full object-contain' src="/assets/eshop/testtimonialLogo.svg" alt="" />
+              <div className="h-12 w-12">
+                <img className="w-full h-full object-contain" src="/assets/eshop/testtimonialLogo.svg" alt="" />
               </div>
               <p className="text-left mt-3 font-light text-[0.85rem] tracking-wider leading-6 text-gray-700">
-                Khwaahish are our family jewellers for every right reason.. Their new collection Gulz, is so very fresh and some of the designs are very interesting too! I am sure I'll find many favourites among them as usual.
+                Khwaahish are our family jewellers for every right reason.. Their new collection Gulz, is so very fresh and some of the designs are very interesting too! I am sure I&apos;ll find many favourites among them as usual.
               </p>
             </div>
 
-            <div className='w-full flex gap-5 items-center'>
-              <div className=" h-20 w-20 bg-red-500 rounded-full overflow-hidden">
+            <div className="w-full flex gap-5 items-center">
+              <div className="h-20 w-20 bg-red-500 rounded-full overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
                   src="/assets/eshop/testtimonialPersons/Dimple.avif"
@@ -235,25 +235,47 @@ const Testimonial = () => {
         </SwiperSlide>
       </Swiper>
 
-      <div className="md:flex hidden justify-center gap-2 mt-4">
-        <div
-          onClick={() => handleDotClick(0)}
-          className={`h-3 w-3 rounded-full cursor-pointer ${
-            activeIndex % 2 === 0
-              ? "bg-amber-800"
-              : "bg-gray-300 border "
-          }`}
-        ></div>
-        <div
-          onClick={() => handleDotClick(1)} 
-          className={`h-3 w-3 rounded-full cursor-pointer ${
-            activeIndex % 2 === 1
-              ? "bg-amber-800"
-              : "bg-gray-300 border "
-          }`}
-        ></div>
+      <div className="flex justify-center gap-2 mt-4">
+        {window.innerWidth < 768 ? (
+          // Show 5 dots for mobile
+          [...Array(5)].map((_, index) => (
+            <div
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={`h-3 w-3 rounded-full cursor-pointer ${
+                activeIndex === index ? "bg-amber-800" : "bg-gray-300 border"
+              }`}
+            ></div>
+          ))
+        ) : window.innerWidth < 1024 ? (
+          // Show 3 dots for tablet
+          [...Array(3)].map((_, index) => (
+            <div
+              key={index}
+              onClick={() => handleDotClick(index * 2)}
+              className={`h-3 w-3 rounded-full cursor-pointer ${
+                Math.floor(activeIndex / 2) === index ? "bg-amber-800" : "bg-gray-300 border"
+              }`}
+            ></div>
+          ))
+        ) : (
+          // Show 2 dots for desktop
+          [...Array(2)].map((_, index) => (
+            <div
+              key={index}
+              onClick={() => handleDotClick(index * 3)}
+              className={`h-3 w-3 rounded-full cursor-pointer ${
+                Math.floor(activeIndex / 3) === index ? "bg-amber-800" : "bg-gray-300 border"
+              }`}
+            ></div>
+          ))
+        )}
       </div>
     </div>
+
+
+
+
   );
 };
 

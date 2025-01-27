@@ -3,7 +3,7 @@ import Hero from './Fazza/Hero';
 import Jewels from './Fazza/Jewels'
 import AdCampaign from './Fazza/AdCampaign'
 import BrandSlider from './Fazza/Sliders/BrandSlider'
-import VisitStore from './Fazza/VisitStore'
+import VisitStore from './Festara/VisitStore'
 import Footer from './Fazza/Footer'
 import Navbar from './Fazza/Navbar'
 const FinalPage3 = () => {

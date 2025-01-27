@@ -187,20 +187,22 @@ const Hero = () => {
     <>
       <div className='relative justify-center flex flex-col items-center pb-10'>
         <picture>
+          <source media="(min-width: 1280px)" srcSet="/assets/Fazza-New-Hero-Banner-Desktop.jpg" />
           <source media="(min-width: 1024px)" srcSet="/assets/Fazza-New-Hero-Banner-Desktop.jpg" />
           <source media="(min-width: 768px)" srcSet="/assets/Fazza-New-Hero-Banner-Desktop.jpg" />
-          <source media="(min-width: 640px)" srcSet="/assets/Fazza-New-Hero-Banner-Desktop.jpg" />
+          <source media="(max-width: 767px)" srcSet="/assets/Fazza-Landing-Page-New-Hero-Banner-Mobile.jpg" />
           <img 
-            className='w-[35rem] md:w-[96rem] h-[65vh] md:h-[80vh] lg:h-[120vh] object-cover md:mt-10'
-            src='/assets/Fazza-Landing-Page-New-Hero-Banner-Mobile.jpg'
+            
+            className="w-screen h-full max-w-full min-h-[70vh] sm:h-[150vh] md:h-[50vw] lg:h-[40vw] xl:h-[50vw] object-cover md:mt-10"
+            src="/assets/Fazza-Landing-Page-New-Hero-Banner-Mobile.jpg"
             alt="Hero Banner"
           />
         </picture>
 
         <div className='flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 w-full max-w-7xl mx-auto'>
-          <img className='h-80 w-80 -mt-16 md:-mt-10 lg:-mt-44' id="fazza" src="/assets/Fazza-Golden-Logo.svg"/>
-          <p className='lg:-mt-12 -mt-14 leading-7 font-centuryGothic w-full md:w-[90%] lg:w-[90%] xl:w-[87%] text-center text-[#757575] text-sm md:text-m lg:text-m tracking-widest'>
-          Every item of Fazza jewellery is more than just an accessory; it is a timeless treasure that adds long-term value to any woman's collection. Fazza designs with the goal of making traditional Polki jewellery more accessible, combining the charm of heritage with modern elegance in each piece.
+          <img className='sm:h-44 sm:w-32  md:h-80 md:w-80 lg:w-80 lg:h-80 h-40 w-40 -mt-3 sm:-mt-14 md:-mt-44 lg:-mt-44' id="fazza" src="/assets/Fazza-Golden-Logo.svg"/>
+          <p className='lg:-mt-12 -mt-5 leading-7 font-centuryGothic w-full md:w-[90%] lg:w-[90%] xl:w-[87%] text-center text-[#757575] text-base sm:text-lg md:text-xl lg:text-2xl tracking-widest'>
+          Every item of Fazza jewellery is more than just an accessory; it is a timeless treasure that adds long-term value to any woman&apos;s collection. Fazza designs with the goal of making traditional Polki jewellery more accessible, combining the charm of heritage with modern elegance in each piece.
           </p>
         </div>
 

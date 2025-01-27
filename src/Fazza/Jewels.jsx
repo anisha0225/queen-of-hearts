@@ -1,6 +1,3 @@
-
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import "../App.css";
@@ -31,8 +28,15 @@ const Jewels = () => {
     ],
   ];
 
-  // Flatten array for mobile view
+  // Flatten array for different views
   const mobileSlides = slides.flat();
+  const tabletSlides = mobileSlides.reduce((acc, curr, i) => {
+    if (i % 2 === 0) {
+      acc.push([curr, mobileSlides[(i + 1) % mobileSlides.length]]);
+    }
+    return acc;
+  }, []);
+  
   const swiperRef = useRef(null);
 
   return (
@@ -51,8 +55,8 @@ const Jewels = () => {
       <div className="w-full overflow-hidden pb-12">
         <section className="py-4 sm:py-4 md:py-4">
           <div className="relative">
-            {/* For larger screens */}
-            <div className="hidden md:block">
+            {/* For desktop (1024px and above) */}
+            <div className="hidden lg:block">
               <Swiper
                 modules={[Navigation, Autoplay]}
                 spaceBetween={30}
@@ -69,7 +73,7 @@ const Jewels = () => {
                 className="relative"
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={(swiper) => {
-                  const dots = document.querySelectorAll('.slide-dot');
+                  const dots = document.querySelectorAll('.slide-dot-desktop');
                   dots.forEach((dot, index) => {
                     if (index === swiper.realIndex) {
                       dot.classList.add('w-8', 'bg-black');
@@ -102,12 +106,12 @@ const Jewels = () => {
                 {slides.map((_, index) => (
                   <span
                     key={index}
-                    className={`slide-dot h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    className={`slide-dot-desktop h-2 rounded-full transition-all duration-300 cursor-pointer ${
                       index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-400'
                     }`}
                     onClick={() => {
                       if (swiperRef.current) {
-                        swiperRef.current.slideTo(index);
+                        swiperRef.current.slideToLoop(index);
                       }
                     }}
                   ></span>
@@ -116,7 +120,71 @@ const Jewels = () => {
               </div>
             </div>
 
-            {/* For mobile screens */}
+            {/* For tablet (765px to 1024px) */}
+            <div className="hidden md:block lg:hidden">
+              <Swiper
+                modules={[Navigation, Autoplay]}
+                spaceBetween={20}
+                slidesPerView={1}
+                navigation={{
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+                }}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onSlideChange={(swiper) => {
+                  const dots = document.querySelectorAll('.slide-dot-tablet');
+                  dots.forEach((dot, index) => {
+                    if (index === swiper.realIndex) {
+                      dot.classList.add('w-8', 'bg-black');
+                      dot.classList.remove('w-2', 'bg-gray-400');
+                    } else {
+                      dot.classList.remove('w-8', 'bg-black');
+                      dot.classList.add('w-2', 'bg-gray-400');
+                    }
+                  });
+                }}
+              >
+                {tabletSlides.map((pair, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="flex gap-5">
+                      {pair.map((src, i) => (
+                        <div key={i} className="flex-1">
+                          <img
+                            src={src}
+                            alt={`Slide ${index * 2 + i + 1}`}
+                            className="w-full h-[400px] object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="absolute -bottom-12 left-0 right-0 flex justify-center items-center space-x-1 z-10">
+                <div className="swiper-button-prev !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
+                {tabletSlides.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`slide-dot-tablet h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                    }`}
+                    onClick={() => {
+                      if (swiperRef.current) {
+                        swiperRef.current.slideToLoop(index);
+                      }
+                    }}
+                  ></span>
+                ))}
+                <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
+              </div>
+            </div>
+
+            {/* For mobile screens (below 765px) */}
             <div className="md:hidden relative">
               <Swiper
                 modules={[Navigation, Autoplay]}
@@ -150,7 +218,7 @@ const Jewels = () => {
                     <img
                       src={src}
                       alt={`Slide ${index + 1}`}
-                      className="w-full h-[300px] object-cover"
+                      className="w-full h-[420px] object-cover"
                     />
                   </SwiperSlide>
                 ))}
@@ -165,7 +233,7 @@ const Jewels = () => {
                     }`}
                     onClick={() => {
                       if (swiperRef.current) {
-                        swiperRef.current.slideTo(index);
+                        swiperRef.current.slideToLoop(index);
                       }
                     }}
                   ></span>

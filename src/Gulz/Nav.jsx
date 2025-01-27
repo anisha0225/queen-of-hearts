@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { Link } from 'react-router-dom';
-
+import "../App.css"
 const Nav = () => {
   const [show, setShow] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -111,10 +111,10 @@ const Nav = () => {
       <div className="w-full h-8 md:h-10 bg-[#4F2426] p-2 px-4 md:px-8">
         <div className="h-full w-full relative">
           <a href="#" className="text-white uppercase text-xs md:text-base hidden md:block hover:underline transition-all duration-300">Visit Brand Website</a>
-          <div className="w-[80%] md:w-[35%] h-full absolute left-1/2 -translate-x-1/2 top-0">
-            <marquee scrollamount="3" className="text-white text-xs md:text-base">
+          <div className="w-[80%] md:w-[35%] h-full absolute left-1/2 -translate-x-1/2 top-0 overflow-hidden">
+            <div className="whitespace-nowrap animate-marquee2">
               Free & Insured Shipping Across India | International Shipping +919884039111
-            </marquee>
+            </div>
           </div>
         </div>
       </div>
@@ -147,7 +147,8 @@ const Nav = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded">
+                <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded " style={{ width: window.innerWidth <= 478 ? '100%' : '24rem' }}>
+
           <div className="p-4">
             <button
               onClick={toggleMenu}

@@ -207,10 +207,10 @@ const Navbar = () => {
 
         <div className="flex items-center">
         
-            <img src="/assets/fazza-white-logo.png" alt="Middle Logo" className="h-9 sm:h-10 cursor-pointer" />
+            <img src="/assets/pache-white-logo.png" alt="Middle Logo" className="h-5 sm:h-5 cursor-pointer" />
         
-          <div className="border-l border-white h-4 sm:h-8 mx-2 sm:mx-4 md:mt-2" id="divide"></div>
-          <a href="/" className="font-medium text-base md:text-2xl sm:text-xl text-white">
+          <div className="border-l border-white h-4 sm:h-6 mx-2 sm:mx-4" id="divide"></div>
+          <a href="/" className="font-medium text-lg sm:text-2xl text-white">
             QUEEN OF HEARTS
           </a>
         </div>
@@ -223,7 +223,7 @@ const Navbar = () => {
 
       {/*Menu*/}
       {isMenuOpen && (
-        <div className="menu fixed top-0 left-0 w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto md:w-[24rem] lg:w-[24rem] sm:w-full max-w-full" style={{ width: window.innerWidth <= 478 ? '100%' : '24rem' }}>
+        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-white text-black z-30 shadow-lg overflow-y-auto">
           <div className="p-4">
             <button
               onClick={toggleMenu}

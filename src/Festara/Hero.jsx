@@ -187,11 +187,10 @@ const Hero = () => {
     <>
       <div className='relative justify-center flex flex-col items-center pb-10'>
         <picture>
-          <source media="(min-width: 1024px)" srcSet="/assets/Festara-New-Hero-Banner-Desktop.jpg" />
-          <source media="(min-width: 768px)" srcSet="/assets/Festara-New-Hero-Banner-Desktop.jpg" />
-          <source media="(min-width: 640px)" srcSet="/assets/Festara-New-Hero-Banner-Desktop.jpg" />
+          <source media="(min-width: 767px)" srcSet="/assets/Festara-New-Hero-Banner-Desktop.jpg" />
+          <source media="(max-width: 766px)" srcSet="/assets/Festara-Page-New-Hero-Banner-Mobile.jpg" />
           <img 
-            className='w-[35rem] md:w-[96rem] h-[65vh] md:h-[80vh] lg:h-[120vh] object-cover md:mt-10'
+            className='w-screen h-full max-w-full min-h-[70vh]  sm:h-[150vh] md:h-[110vh] lg:h-[120vh]  object-cover md:mt-10'
             src='/assets/Festara-Page-New-Hero-Banner-Mobile.jpg'
             alt="Hero Banner"
           />

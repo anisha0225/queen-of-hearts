@@ -15,7 +15,7 @@
 }
 
 .animate-marquee {
-  animation: marquee 50s linear infinite;
+  animation: marquee 10s linear infinite;
 }
 
 .animate-marquee:hover {
@@ -25,15 +25,16 @@
 
 @keyframes marquee2 {
     0% {
-      transform: translateX(-35%);
+      transform: translateX(95%);
     }
     100% {
-      transform: translateX(15%);
+      transform: translateX(-107%);
     }
   }
   
   .animate-marquee2 {
-    animation: marquee2 30s linear infinite;
+    animation: marquee2 15s linear infinite;
+    color:white;
   }
   
   .animate-marquee2:hover {
@@ -41,6 +42,42 @@
   }
   
 
+  @keyframes marquee3 {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-marquee3 {
+    animation: marquee3 50s linear infinite;
+  }
+  
+  .animate-marquee3:hover {
+    animation-play-state: paused;
+  }
+  
+  
+  @keyframes marquee4 {
+      0% {
+        transform: translateX(-35%);
+      }
+      100% {
+        transform: translateX(15%);
+      }
+    }
+    
+    .animate-marquee4 {
+      animation: marquee4 30s linear infinite;
+    }
+    
+    .animate-marquee4:hover {
+      animation-play-state: paused;
+    }
+    
+  
 
 .button1{
     position: relative;

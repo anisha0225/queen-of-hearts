@@ -89,9 +89,9 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <div className="h-[60vh] md:h-screen w-full relative">
+    <div className="h-full w-screen relative">
                  {isMenuOpen && (
-        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded">
+        <div className="menu fixed top-0 left-0 w-full md:w-[24rem] lg:w-[24rem] sm:w-full h-full bg-[#f7ebeb] text-[#4F2426] z-30 shadow-lg overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-[#4F2426] [&::-webkit-scrollbar-thumb]:rounded " style={{ width: window.innerWidth <= 478 ? '100%' : '24rem' }}>
           <div className="p-4">
             <button
               onClick={toggleMenu}
@@ -255,14 +255,14 @@ const Header = () => {
       </div>
 
       <img
-        className="hidden md:block h-full w-full object-cover object-left-top"
+        className=" hidden md:block w-screen h-full max-w-full min-h-[70vh] sm:h-[150vh] md:h-[50vw] lg:h-[40vw] xl:h-[50vw] object-coverobject-left-top"
         src="/assets/eshop/headerPc.avif"
         alt=""
       />
       
   
       <img
-        className="md:hidden h-full w-full object-cover object-left-top"
+        className="md:hidden w-screen h-full max-w-full min-h-[70vh] sm:h-[150vh] md:h-[50vw] lg:h-[40vw] xl:h-[50vw] object-coverobject-left-top"
         src="/assets/eshop/header.avif"
         alt=""
       />

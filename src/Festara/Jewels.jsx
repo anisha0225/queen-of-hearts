@@ -1,20 +1,17 @@
-
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import "../App.css";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { useEffect, useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const Jewels = () => {
   const slides = [
     // First Set
     [
       '/assets/Festara-Carousal-Images-1.jpg',
-      '/assets/Festara-Carousal-Images-6.jpg',
+      '/assets/Festara-Carousal-Images-6.jpg', 
       '/assets/Festara-Carousal-Images-2.jpg',
     ],
     // Second Set  
@@ -25,9 +22,19 @@ const Jewels = () => {
     ]
   ];
 
+  // Create pairs for tablet view (766px-1024px)
+  const tabletSlides = [
+    ['/assets/Festara-Carousal-Images-1.jpg', '/assets/Festara-Carousal-Images-6.jpg'],
+    ['/assets/Festara-Carousal-Images-2.jpg', '/assets/Festara-Carousal-Images-4.jpg'],
+    ['/assets/Festara-Carousal-Images-3.jpg', '/assets/Festara-Carousal-Images-5.jpg']
+  ];
+
   // Flatten array for mobile view
   const mobileSlides = slides.flat();
   const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeTabletIndex, setActiveTabletIndex] = useState(0);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
 
   return (
     <div className="flex flex-col items-center pb-8">
@@ -45,8 +52,8 @@ const Jewels = () => {
       <div className="w-full overflow-hidden pb-12">
         <section className="py-4 sm:py-4 md:py-4">
           <div className="relative">
-            {/* For larger screens */}
-            <div className="hidden md:block">
+            {/* For larger screens (>1024px) */}
+            <div className="hidden min-[1025px]:block">
               <Swiper
                 modules={[Navigation, Autoplay]}
                 spaceBetween={30}
@@ -62,18 +69,7 @@ const Jewels = () => {
                 loop={true}
                 className="relative"
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
-                onSlideChange={(swiper) => {
-                  const dots = document.querySelectorAll('.slide-dot');
-                  dots.forEach((dot, index) => {
-                    if (index === swiper.realIndex) {
-                      dot.classList.add('w-8', 'bg-black');
-                      dot.classList.remove('w-2', 'bg-gray-400');
-                    } else {
-                      dot.classList.remove('w-8', 'bg-black');
-                      dot.classList.add('w-2', 'bg-gray-400');
-                    }
-                  });
-                }}
+                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               >
                 {slides.map((slideSet, setIndex) => (
                   <SwiperSlide key={setIndex} className="cursor-grab active:cursor-grabbing">
@@ -97,7 +93,7 @@ const Jewels = () => {
                   <span
                     key={index}
                     className={`slide-dot h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                      index === activeIndex ? 'w-8 bg-black' : 'w-2 bg-gray-400'
                     }`}
                     onClick={() => {
                       if (swiperRef.current) {
@@ -110,8 +106,61 @@ const Jewels = () => {
               </div>
             </div>
 
-            {/* For mobile screens */}
-            <div className="md:hidden relative">
+            {/* For tablet screens (766px-1024px) */}
+            <div className="hidden min-[766px]:block min-[1025px]:hidden">
+              <Swiper
+                modules={[Navigation, Autoplay]}
+                spaceBetween={20}
+                slidesPerView={1}
+                navigation={{
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+                }}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onSlideChange={(swiper) => setActiveTabletIndex(swiper.realIndex)}
+              >
+                {tabletSlides.map((pair, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="flex gap-4">
+                      {pair.map((src, imgIndex) => (
+                        <div key={imgIndex} className="flex-1">
+                          <img
+                            src={src}
+                            alt={`Slide ${index * 2 + imgIndex + 1}`}
+                            className="w-full h-[400px] object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="absolute -bottom-12 left-0 right-0 flex justify-center items-center space-x-1 z-10">
+                <div className="swiper-button-prev !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
+                {tabletSlides.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`slide-dot-tablet h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      index === activeTabletIndex ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                    }`}
+                    onClick={() => {
+                      if (swiperRef.current) {
+                        swiperRef.current.slideTo(index);
+                      }
+                    }}
+                  ></span>
+                ))}
+                <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
+              </div>
+            </div>
+
+            {/* For mobile screens (<766px) */}
+            <div className="min-[766px]:hidden relative">
               <Swiper
                 modules={[Navigation, Autoplay]}
                 spaceBetween={10}
@@ -126,36 +175,25 @@ const Jewels = () => {
                 }}
                 loop={true}
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
-                onSlideChange={(swiper) => {
-                  const dots = document.querySelectorAll('.slide-dot-mobile');
-                  dots.forEach((dot, index) => {
-                    if (index === swiper.realIndex) {
-                      dot.classList.add('w-8', 'bg-black');
-                      dot.classList.remove('w-2', 'bg-gray-400');
-                    } else {
-                      dot.classList.remove('w-8', 'bg-black');
-                      dot.classList.add('w-2', 'bg-gray-400');
-                    }
-                  });
-                }}
+                onSlideChange={(swiper) => setActiveMobileIndex(swiper.realIndex)}
               >
                 {mobileSlides.map((src, index) => (
                   <SwiperSlide key={index}>
                     <img
                       src={src}
                       alt={`Slide ${index + 1}`}
-                      className="w-full h-[300px] object-cover"
+                      className="w-full h-[400px] xs:h-[400px] sm:h-[500px] object-cover"
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <div className="absolute -bottom-12 left-0 right-0 flex justify-center items-center space-x-1 z-10">
-                <div className="swiper-button-prev !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
+              <div className="absolute -bottom-8 sm:-bottom-12 left-0 right-0 flex justify-center items-center space-x-1 z-10">
+                <div className="swiper-button-prev !text-black !font-extrabold transition-transform !static !w-6 !h-6 sm:!w-8 sm:!h-8 !mt-0 after:!text-lg sm:after:!text-xl cursor-pointer"></div>
                 {mobileSlides.map((_, index) => (
                   <span
                     key={index}
-                    className={`slide-dot-mobile h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      index === 0 ? 'w-8 bg-black' : 'w-2 bg-gray-400'
+                    className={`slide-dot-mobile h-1.5 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      index === activeMobileIndex ? 'w-6 sm:w-8 bg-black' : 'w-1.5 sm:w-2 bg-gray-400'
                     }`}
                     onClick={() => {
                       if (swiperRef.current) {
@@ -164,7 +202,7 @@ const Jewels = () => {
                     }}
                   ></span>
                 ))}
-                <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-8 !h-8 !mt-0 after:!text-xl cursor-pointer"></div>
+                <div className="swiper-button-next !text-black !font-extrabold transition-transform !static !w-6 !h-6 sm:!w-8 sm:!h-8 !mt-0 after:!text-lg sm:after:!text-xl cursor-pointer"></div>
               </div>
             </div>
           </div>

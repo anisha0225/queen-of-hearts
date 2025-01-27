@@ -15,6 +15,7 @@ import FinalPage from './FinalPage(festara)'
 import FinalPage1 from './FinalPage(q-o-h)'
 import FinalPage2 from './FinalPage(Gulz)'
 import FinalPage3 from './FinalPage(Fazza)'
+import FinalPage4 from './FinalPage(Pache)'
 const App = () => {
 
   return (
@@ -25,6 +26,7 @@ const App = () => {
     <Route path="/festara" element={<FinalPage/>}/>
     <Route path="/gulz" element={<FinalPage2/>}/>
     <Route path="/fazza" element={<FinalPage3/>}/>
+    <Route path="/pache" element={<FinalPage4/>}/>
 
   </Routes>
   </>

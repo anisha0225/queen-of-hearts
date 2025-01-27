@@ -1,49 +1,65 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 const Galleria = () => {
   const galleriaRef = useRef(null)
 
+  useEffect(() => {
+    const handleResize = () => {
+      const modal = document.getElementById('imageModal')
+      const modalImage = document.getElementById('modalImage')
+      if (modal && modalImage) {
+        modalImage.style.maxHeight = `${window.innerHeight * 0.9}px`
+        modalImage.style.maxWidth = `${window.innerWidth * 0.9}px`
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    handleResize()
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
-    <section ref={galleriaRef} className="text-center w-full h-auto flex-col py-8 sm:py-16">
+    <section ref={galleriaRef} className="text-center w-full h-auto flex-col sm:py-8 md:py-10 lg:py-32">
       {/* Header Section */}
-      <div className="flex items-center justify-center mb-4 sm:mb-8">
-        <hr className="w-6 sm:w-8 lg:w-16 h-0.5 bg-gray-700 border-0 rounded" />
-        <span className="text-base sm:text-lg lg:text-3xl text-gray-700 mx-2 sm:mx-4">
+      <div className="flex items-center justify-center mb-3 sm:mb-4 md:mb-6 lg:mb-8">
+        <hr className="w-4 sm:w-6 md:w-8 lg:w-16 h-0.5 bg-gray-700 border-0 rounded" />
+        <span className="text-sm sm:text-base md:text-lg lg:text-3xl text-gray-700 mx-2 sm:mx-3 md:mx-4">
           THE GALLERIA
         </span>
-        <hr className="w-6 sm:w-8 lg:w-16 h-0.5 bg-gray-700 border-0 rounded" />
+        <hr className="w-4 sm:w-6 md:w-8 lg:w-16 h-0.5 bg-gray-700 border-0 rounded" />
       </div>
 
       {/* Description */}
-      <p className="text-sm sm:text-base lg:text-lg text-gray-800 mb-2 sm:mb-4 tracking-wide px-4 sm:px-0">
+      <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-800 mb-2 sm:mb-3 md:mb-4 tracking-wide px-2 sm:px-4 md:px-0">
         Khwaahish Diamond Jewellery, Chennai
       </p>
-      <p className="text-xs sm:text-sm lg:text-base text-gray-500 tracking-wide px-4 sm:px-16 lg:px-72 mb-6 sm:mb-8 leading-5 sm:leading-6">
+      <p className="text-[10px] sm:text-xs md:text-sm lg:text-base text-gray-500 tracking-wide px-4 sm:px-8 md:px-16 lg:px-72 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
         Located in the heart of Chennai, Queen Of Hearts, Jewels Galleria, brings the finest accessible
         diamond jewellery to life. Explore curated collections in a space designed for luxury and
         personalised service.
       </p>
 
       {/* Image Section */}
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-0">
+      <div className="relative w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-6xl mx-auto px-2 sm:px-4 md:px-8 lg:px-0">
         <img
           src="/assets/Khwaahish-Store-img.jpg"
           alt="Khwaahish Galleria"
-          className="w-full max-w-5xl h-[250px] sm:h-[350px] lg:h-[35rem] mx-auto border-4 sm:border-8 border-gray-100 cursor-pointer transition-transform"
+          className="w-full max-w-full sm:max-w-5xl h-[80vw] sm:h-[400px] md:h-[520px] lg:h-[35rem] mx-auto border-2 sm:border-4 md:border-6 lg:border-8 border-gray-100 cursor-pointer transition-transform duration-300"
           onClick={() => document.getElementById('imageModal').classList.remove('hidden')}
         />
 
         {/* Modal */}
         <div
           id="imageModal"
-          className="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center"
+          className="hidden fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8"
         >
-          <div className="relative w-full h-full flex items-center justify-center px-2 sm:px-4">
+          <div className="relative w-full h-full flex items-center justify-center">
             <img
               id="modalImage"
               src="/assets/Khwaahish-Store-img.jpg"
               alt="Khwaahish Galleria"
-              className="max-w-[95%] sm:max-w-[90%] max-h-[90vh] object-contain cursor-zoom-in transition-transform"
+              className="max-w-[95%] sm:max-w-[90%] max-h-[90vh] object-contain cursor-zoom-in transition-all duration-300"
               onClick={(e) => {
                 const img = e.target;
                 if (img.classList.contains('zoomed')) {
@@ -69,13 +85,26 @@ const Galleria = () => {
                   img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
                 }
               }}
+              onTouchMove={(e) => {
+                if (e.touches.length === 2) {
+                  e.preventDefault();
+                  const touch1 = e.touches[0];
+                  const touch2 = e.touches[1];
+                  const dist = Math.hypot(
+                    touch2.pageX - touch1.pageX,
+                    touch2.pageY - touch1.pageY
+                  );
+                  const img = e.target;
+                  img.style.transform = `scale(${dist / 100})`;
+                }
+              }}
             />
 
             {/* Modal Buttons */}
-            <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex space-x-2 sm:space-x-4">
+            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex space-x-1 sm:space-x-2 md:space-x-3">
               {/* Zoom Button */}
               <button
-                className="p-1.5 sm:p-2 bg-white rounded-full hover:bg-gray-100"
+                className="p-1 sm:p-1.5 md:p-2 bg-white/90 hover:bg-white rounded-full transition-colors"
                 onClick={() => {
                   const img = document.getElementById('modalImage');
                   if (img.classList.contains('zoomed')) {
@@ -88,7 +117,7 @@ const Galleria = () => {
                 }}
               >
                 <svg
-                  className="w-4 h-4 sm:w-6 sm:h-6"
+                  className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -104,18 +133,18 @@ const Galleria = () => {
 
               {/* Fullscreen Button */}
               <button
-                className="p-1.5 sm:p-2 bg-white rounded-full hover:bg-gray-100"
+                className="p-1 sm:p-1.5 md:p-2 bg-white/90 hover:bg-white rounded-full transition-colors"
                 onClick={() => {
                   const elem = document.getElementById('modalImage');
                   if (!document.fullscreenElement) {
-                    elem.requestFullscreen();
+                    elem.requestFullscreen().catch(console.error);
                   } else {
                     document.exitFullscreen();
                   }
                 }}
               >
                 <svg
-                  className="w-4 h-4 sm:w-6 sm:h-6"
+                  className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -131,7 +160,7 @@ const Galleria = () => {
 
               {/* Share Button */}
               <button
-                className="p-1.5 sm:p-2 bg-white rounded-full hover:bg-gray-100"
+                className="p-1 sm:p-1.5 md:p-2 bg-white/90 hover:bg-white rounded-full transition-colors"
                 onClick={() => {
                   if (navigator.share) {
                     navigator
@@ -142,14 +171,14 @@ const Galleria = () => {
                       })
                       .catch(console.error);
                   } else {
-                    navigator.clipboard.writeText(window.location.href).then(() =>
-                      alert('Link copied to clipboard!')
-                    );
+                    navigator.clipboard.writeText(window.location.href)
+                      .then(() => alert('Link copied to clipboard!'))
+                      .catch(console.error);
                   }
                 }}
               >
                 <svg
-                  className="w-4 h-4 sm:w-6 sm:h-6"
+                  className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -165,14 +194,17 @@ const Galleria = () => {
 
               {/* Close Button */}
               <button
-                className="p-1.5 sm:p-2 bg-white rounded-full hover:bg-gray-100"
+                className="p-1 sm:p-1.5 md:p-2 bg-white/90 hover:bg-white rounded-full transition-colors"
                 onClick={() => {
                   const modal = document.getElementById('imageModal');
+                  const img = document.getElementById('modalImage');
+                  img.style.transform = 'scale(1)';
+                  img.classList.remove('zoomed');
                   modal.classList.add('hidden');
                 }}
               >
                 <svg
-                  className="w-4 h-4 sm:w-6 sm:h-6"
+                  className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

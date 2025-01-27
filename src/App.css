@@ -19,7 +19,7 @@
   }
   @font-face {
     font-family: 'CustomFontCarpethen';
-    src: url('/public/assets/Carpethen.otf') format('truetype');
+    src: url('/assets/Carpethen.otf') format('truetype');
   }
   body {
     font-family: 'CustomFont', sans-serif;

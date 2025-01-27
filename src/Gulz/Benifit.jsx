@@ -14,16 +14,13 @@ const Benifit = () => {
         <meta name="twitter:description" content="Discover our premium e-shop benefits including free shipping, quality assurance, and lifetime exchange policy. Shop luxury jewelry with confidence." />
       </Helmet>
 
-      <div className='min-h-[60vh] w-full bg-[#F7ECEB] py-8 md:py-10'>
-       
-
-
-<h1 className="text-xl sm:text-2xl md:text-[1.6rem] text-center mt-1 sm:mt-3 md:-mt-4 uppercase text-[#4F2426] tracking-[0.2rem] sm:tracking-[0.4rem]">
+      <div className='min-h-[60vh] w-full bg-[#F7ECEB] py-4 md:py-10'>
+        <h1 className="text-xl sm:text-2xl md:text-[1.6rem] text-center mt-1 sm:mt-3 md:-mt-4 uppercase text-[#4F2426] tracking-[0.2rem] sm:tracking-[0.4rem]">
           E-shop Benefits
           <span className="flex border-b-2 border-[#58282a] w-16 sm:w-20 md:w-24 mt-2 mx-auto"></span>
         </h1>
-        <div className='w-[95%] md:w-[90%] mt-6 md:mt-10 mx-auto flex flex-col md:flex-row justify-center items-stretch gap-6 md:gap-7 md:mt-5'>
-          <div className='w-full md:w-[30%] flex flex-col p-4 md:p-10 gap-4 md:gap-5 items-center'>
+        <div className='w-[95%] md:w-[90%] mt-6 md:mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7'>
+          <div className='w-full flex flex-col p-4 md:p-10 gap-4 md:gap-5 items-center'>
             <div className='h-8 md:h-10 w-12 md:w-14'>
               <img className='h-full w-full object-contain' src="/assets/eshop/benifit1.svg" alt="Delivery and Returns Icon" />
             </div>
@@ -31,7 +28,7 @@ const Benifit = () => {
             <p className='text-center font-light text-sm md:text-[0.9rem] tracking-widest leading-2 text-gray-600'>Complementary and secured shipping across India. 10 day complimentary Return policy within India. Your order will be shipped to you fully insured by reputed carriers.</p>
           </div>
 
-          <div className='w-full md:w-[30%] flex flex-col p-4 md:p-10 gap-4 md:gap-5 items-center'>
+          <div className='w-full flex flex-col p-4 md:p-10 gap-4 md:gap-5 items-center'>
             <div className='h-8 md:h-10 w-12 md:w-14'>
               <img className='h-full w-full object-contain' src="/assets/eshop/benifit2.svg" alt="Quality Assurance Icon" />
             </div>
@@ -39,7 +36,7 @@ const Benifit = () => {
             <p className='text-center font-light text-sm md:text-[0.9rem] tracking-widest leading-2 text-gray-600'>Exceptional quality of diamonds, gemstones and crafting techniques. We are recognised for our diamond expertise and unique craftsmanship. Every diamond and precious gemstone used is handpicked and ethically sourced by our inhouse team of experts.</p>
           </div>
 
-          <div className='w-full md:w-[30%] flex flex-col p-4 md:p-10 gap-4 md:gap-5 items-center'>
+          <div className='w-full flex flex-col p-4 md:p-10 gap-4 md:gap-5 items-center md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-[50%] lg:max-w-full'>
             <div className='h-8 md:h-10 w-12 md:w-14'>
               <img className='h-full w-full object-contain' src="/assets/eshop/benifit3.svg" alt="Lifetime Exchange Icon" />
             </div>
