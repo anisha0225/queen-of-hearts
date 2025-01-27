@@ -182,7 +182,7 @@ const Header = () => {
         <div className="flex items-center">
           <img src="/assets/Queen-of-Hearts-Logo.png" alt="Middle Logo" className="h-12 sm:h-16 cursor-pointer" />
           <div className="border-l border-black h-4 sm:h-6 mx-2 sm:mx-4" id="divide"></div>
-          <a href="/" className="font-medium text-lg sm:text-2xl text-black">
+          <a href="/" className="font-medium text-xs sm:text-2xl text-black">
             QUEEN OF HEARTS
           </a>
         </div>
