@@ -118,13 +118,13 @@ const Hero = () => {
 
       <div className='relative justify-center flex flex-col items-center pb-10 z-[-1]'>
         <picture>
-          <source media="(min-width: 1280px)" srcSet="/public/assets/live-life-platinum.jpg" />
-          <source media="(min-width: 1024px)" srcSet="/public/assets/live-life-platinum.jpg" />
-          <source media="(min-width: 768px)" srcSet="/public/assets/live-life-platinum.jpg" />
-          <source media="(max-width: 767px)" srcSet="/public/assets/Pache-Collection_Reel_Thumbnail-final.jpg" />
+          <source media="(min-width: 1280px)" srcSet="/assets/live-life-platinum.jpg" />
+          <source media="(min-width: 1024px)" srcSet="/assets/live-life-platinum.jpg" />
+          <source media="(min-width: 768px)" srcSet="/assets/live-life-platinum.jpg" />
+          <source media="(max-width: 767px)" srcSet="/assets/Pache-Collection_Reel_Thumbnail-final.jpg" />
           <img 
             className="w-screen h-full max-w-full min-h-[60vw] sm:h-[170vh] md:h-[50vw] lg:h-[40vw] xl:h-[60vw] object-cover md:-mt-20 lg:-mt-12 sm:-mt-52 -mt-[28vw] z-[-2]"
-            src="/public/assets/Pache-Collection_Reel_Thumbnail-final.jpg"
+            src="/assets/Pache-Collection_Reel_Thumbnail-final.jpg"
             alt="Hero Banner"
           />
         </picture>
