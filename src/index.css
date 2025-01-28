@@ -13,7 +13,9 @@
     transform: translateX(-50%);
   }
 }
-
+body{
+  overflow-x:hidden;
+}
 
 @keyframes scroll-icons {
   0% {
