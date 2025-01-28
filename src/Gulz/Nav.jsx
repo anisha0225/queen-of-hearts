@@ -245,7 +245,7 @@ const Nav = () => {
               </li>
               <li>
                 <Link
-                  to="/gulz"
+                  to="/pache"
                   className="text-gray-800 hover:text-[#4F2426] hover:underline hover:underline-offset-4 transition-all duration-500 text-[0.95rem] tracking-widest"
                 >
                   Pache-Precious Jewellery for Men
